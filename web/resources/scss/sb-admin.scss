@@ -1,0 +1,28 @@
+// Import Custom Variables
+<<<<<<< HEAD
+@import "variables";
+=======
+@import "variables.scss";
+>>>>>>> 3ca5734983e67916403e15b88185f04a66757c07
+
+// Import Bootstrap
+@import "../vendor/bootstrap/scss/bootstrap.scss";
+
+// Import Custom SCSS
+<<<<<<< HEAD
+@import "mixins";
+@import "global";
+@import "utilities";
+@import "navbar";
+@import "cards";
+@import "login";
+@import "footer";
+=======
+@import "mixins.scss";
+@import "global.scss";
+@import "utilities.scss";
+@import "navbar.scss";
+@import "cards.scss";
+@import "login.scss";
+@import "footer.scss";
+>>>>>>> 3ca5734983e67916403e15b88185f04a66757c07

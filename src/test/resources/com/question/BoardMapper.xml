@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.questionBank.board.mapper.BoardMapper">
+    <select id="getList" resultType="com.questionBank.board.domain.BoardVO">
+        <![CDATA[select * from tb1_board where bno > 0 ]]>
+    </select>
+    <sql id="criteria">
+        <trim prefix=" where " suffix="" prefixOverrides="OR">
+            <foreach item="type" collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString() ">
+                            title like '%' #{keyword} '%'
+                        </when>
+                        <when test="type == 'C'.toString() ">
+                            content like '%' #{keyword} '%'
+                        </when>
+                        <when test="type == 'W'.toString() ">
+                            writer like '%' #{keyword} '%'
+                        </when>
+
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+    <sql id="criteria2">
+
+        <trim prefix=" (" suffix=") AND " prefixOverrides="OR">
+            <foreach item="type" collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title like '%' #{keyword} '%'
+                        </when>
+                        <when test="type == 'C'.toString() ">
+                            content like '%' #{keyword} '%'
+                        </when>
+                        <when test="type == 'W'.toString() ">
+                            writer like '%' #{keyword} '%'
+                        </when>
+
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+    <select id="getListWithPaging" resultType="com.questionBank.board.domain.BoardVO">
+        <![CDATA[select bno, title, writer, content from( select row_number() over (order by bno desc), bno,title, content,writer from tb1_board ]]><include refid="criteria"/> <![CDATA[  limit #{allNum}) as t1b limit #{amount} offset #{paging}]]>
+    </select>
+
+    <select id="read" resultType="com.questionBank.board.domain.BoardVO">
+          <![CDATA[select * from tb1_board where bno = #{ bno }]]>
+    </select>
+
+    <insert id="insert" >
+        <![CDATA[insert into tb1_board (bno, title, content,writer) values(#{bno},#{title},#{content},#{writer})]]>
+    </insert>
+
+    <delete id="delete">
+        delete from tb1_board where bno = #{bno}
+    </delete>
+    <update id="update">
+        update tb1_board
+        set title = #{title},
+        content = #{content},
+        writer = #{writer}
+        where bno = #{bno}
+    </update>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*) from tb1_board where <include refid="criteria2"/>  bno >0
+    </select>
+
+</mapper>
+
