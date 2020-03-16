@@ -9,4 +9,5 @@ public interface MemberDAO {
     public List<MemberVO> findId(MemberVO vo);
 
     public List<MemberVO> findPw(MemberVO vo);
+
 }

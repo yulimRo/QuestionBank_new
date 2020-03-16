@@ -16,7 +16,7 @@ public class MemberDAOmpl implements MemberDAO {
     @Inject
     private SqlSession sqlSession;
 
-    private static final String namespace = "com.board.mapper.MemberMapper";
+    private static final String namespace = "com.question.mapper.MemberMapper";
 
     @Override
     public List<MemberVO> findId(MemberVO vo) {

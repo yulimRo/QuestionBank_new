@@ -27,7 +27,7 @@
                         <div class="col-9">
                             <div class="form-group">
                                 <div class="form-label-group">
-                                    <input type="text" name="id " id="id" class="form-control" placeholder="아이디" required="required"autofocus="autofocus">
+                                    <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required="required"autofocus="autofocus">
                                     <label for="id">아이디</label>
                                     <div  class="text-left mt-1" id="dupli"></div>
                                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" name="password" id="passwordConfirm" class="form-control" placeholder="비밀번호 확인"
+                        <input type="password" name="password2" id="passwordConfirm" class="form-control" placeholder="비밀번호 확인"
                                required="required">
                         <label for="passwordConfirm">비밀번호 확인</label>
                     </div>

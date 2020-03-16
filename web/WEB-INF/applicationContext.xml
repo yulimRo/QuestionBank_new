@@ -33,7 +33,7 @@
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
         <property name="defaultEncoding" value="utf-8"/>
-        <property name="username" value="a201758023@gmail.com" />
+        <property name="username" value="a201758023@hs.ac.kr" />
         <property name="password" value="dbfladl12" />
 
         <property name="javaMailProperties">
