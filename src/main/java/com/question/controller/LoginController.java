@@ -131,12 +131,11 @@ public class LoginController {
             email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
             emailSender.SendEmail(email);
             mav= new ModelAndView("redirect:/login/login");
-            return mav;
         }
         else {
             mav=new ModelAndView("redirect:/login/sessionLogout");
-            return mav;
         }
+        return mav;
     }
 
 
