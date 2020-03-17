@@ -12,7 +12,7 @@
 </script>
 <%
 }
-else{
+else{}
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -118,12 +118,12 @@ else{
         </div>
         <div class="card-body">
           <c:forEach items="${rank2}" var="list">
-            <div><c:out value="${list.rno}"/></div>
+            <div><c:out value="${list.group_code}"/></div>
             <div class="form-inline">
               <img class="col-4" src="/resources/pic/groupimg.png">
               <ul class="list-unstyled col-4">
-                <li><strong><c:out value="${list.gname}"/></strong></li>
-                <li><c:out value="${list.grouptag1}"/></li>
+                <li><strong><c:out value="${list.group_name}"/></strong></li>
+                <li><c:out value="${list.cate_code1}"/></li>
               </ul>
               <input  type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>

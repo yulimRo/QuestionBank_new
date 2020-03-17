@@ -12,7 +12,7 @@
 </script>
 <%
 }
-else{
+else{}
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -71,7 +71,7 @@ else{
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">Settings</a>
-        <a class="dropdown-item" href="/main/myPage">마이페이지</a>
+        <a class="dropdown-item" href="/main/mypageUpdateVer">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
       </div>
@@ -115,11 +115,11 @@ else{
                 <tbody>
                 <c:forEach items="${list}" var="board">
                   <tr>
-                    <td><c:out value="${board.rno}"/></td>
+                    <td><c:out value="${board.group_code}"/></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.gname}"/> </a></td>
-                    <td><c:out value="${board.groupAdmin}"/></td>
-                    <td>#<c:out value="${board.grouptag1}"/>#<c:out value="${board.grouptag2}"/></td>
+                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
+                    <td><c:out value="${board.admin_user_code}"/></td>
+                    <td>#<c:out value="${board.cate_code1}"/>#<c:out value="${board.cate_code2}"/></td>
                   </tr>
                 </c:forEach>
                 </tbody>
@@ -155,11 +155,11 @@ else{
                 <tbody>
                 <c:forEach items="${list2}" var="board">
                   <tr>
-                    <td><c:out value="${board.rno}"/></td>
+                    <td><c:out value="${board.group_code}"/></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.gname}"/> </a></td>
-                    <td><c:out value="${board.groupAdmin}"/></td>
-                    <td>#<c:out value="${board.grouptag1}"/>#<c:out value="${board.grouptag2}"/></td>
+                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
+                    <td><c:out value="${board.admin_user_code}"/></td>
+                    <td>#<c:out value="${board.cate_code1}"/>#<c:out value="${board.cate_code2}"/></td>
                   </tr>
                 </c:forEach>
                 </tbody>
@@ -279,5 +279,3 @@ else{
 <%--        window.location.href = "/login/sessionLogout";--%>
 <%--    }--%>
 <%--</script>--%>
-
-
