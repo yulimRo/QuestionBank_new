@@ -54,22 +54,22 @@ public class LoginController {
     @GetMapping("/check")
     public String loginForm(Model model, @RequestParam HashMap hash) {
 
-        String ID = (String) hash.get("ID");
-        String PWD = (String) hash.get("PWD");
+        String id = (String) hash.get("ID");
+        String password = (String) hash.get("PWD");
 
-        log.info("id =............................. " + ID);
-        log.info("password ...................= " + PWD);
+        log.info("id =............................. " + id);
+        log.info("password ...................= " + password);
 
-        MemberVO member = service.chkUser(ID);
+        MemberVO member = service.chkUser(id);
 
         System.out.println("member = " + member);
-        if (member.getPWD().equals(PWD)) {
-            log.info(member.getNAME()+"님 로그인 success");
-            model.addAttribute("testtest", "success");
-            model.addAttribute("ID", member.getID());
-        } else {
-            log.info("로그인 fail");
-            model.addAttribute("testtest", "fail");
+            if (member.getPWD().equals(password)) {
+                log.info(member.getNAME()+"님 로그인 success");
+                model.addAttribute("testtest", "success");
+                model.addAttribute("id", member.getID());
+            } else {
+                log.info("로그인 fail");
+                model.addAttribute("testtest", "fail");
         }
 
         return "/login/sessionLogin";
