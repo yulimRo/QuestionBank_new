@@ -3,11 +3,11 @@
 
 <%
     String test = (String)request.getAttribute("testtest");
-    String id = (String) request.getAttribute("id");
+    String ID = (String) request.getAttribute("ID");
     String result = (String) request.getAttribute("result");
 
     if(test.equals("success")){
-        session.setAttribute("MEMBERID", id);
+        session.setAttribute("MEMBERID", ID);
 %>
 
 <script>

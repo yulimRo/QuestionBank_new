@@ -37,14 +37,14 @@
             <form action="/login/userSearch" method="post">
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="이름을 입력"
+                        <input type="text" id="NAME" name="NAME" class="form-control" placeholder="이름을 입력"
                                required="required" autofocus="autofocus">
-                        <label for="name">이름</label>
+                        <label for="NAME">이름</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" id="phone" name="phone" class="form-control" placeholder="휴대폰번호를 입력"
+                        <input type="text" id="PHONE" name="PHONE" class="form-control" placeholder="휴대폰번호를 입력"
                                required="required" autofocus="autofocus">
                         <label for="phone">휴대폰 번호</label>
                     </div>
@@ -64,16 +64,16 @@
             <form action="sendpw.do" name="pwsearch" method="post" >
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" id="id" name="id" class="form-control" placeholder="아이디 입력"
+                        <input type="text" id="ID" name="ID" class="form-control" placeholder="아이디 입력"
                                required="required" autofocus="autofocus">
-                        <label for="id">아이디 입력</label>
+                        <label for="ID">아이디 입력</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" id="email" name="email" class="form-control" placeholder="이메일 주소를 입력"
+                        <input type="text" id="MAIL" name="MAIL" class="form-control" placeholder="이메일 주소를 입력"
                                required="required" autofocus="autofocus">
-                        <label for="email">이메일 주소를 입력</label>
+                        <label for="MAIL">이메일 주소를 입력</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -99,9 +99,9 @@
 
 <script>
     $(document).on('click','#findId',function(){
-        var name = $('#name').val()
-        var phone = $('#phone').val()
-        var postData = {'name' : name , 'phone' : phone};
+        var NAME = $('#NAME').val()
+        var PHONE = $('#PHONE').val()
+        var postData = {'NAME' : NAME , 'PHONE' : PHONE};
         $.ajax({
             url:'/login/findingId',
             type:'POST',
@@ -110,7 +110,7 @@
             async:false,
             dataType : "json",
             success:function(data){
-                alert("회원님의 정보로 등록된 이메일은 : "+data.id.substring(1,data.id.length-1)+" 입니다.");
+                alert("회원님의 정보로 등록된 이메일은 : "+data.ID.substring(1,data.ID.length-1)+" 입니다.");
             },
             error: function (XMLHttpRequest, textStatus, errorThrown){
                 alert('정보를 다시 입력해주시길 바랍니다.');
@@ -123,11 +123,11 @@
 <title> 비밀번호 찾기</title>
 <script type="text/javascript">
     function search(){
-        if((pwsearch.id.value!=null)&&(pwsearch.email.value!=null)){
+        if((pwsearch.ID.value!=null)&&(pwsearch.MAIL.value!=null)){
             pwsearch.submit();
-        }else if(pwsearch.id.value==null) {
+        }else if(pwsearch.ID.value==null) {
             alert("아이디를 입력하세요.")
-        }else if(pwsearch.email.value==null) {
+        }else if(pwsearch.MAIL.value==null) {
             alert("이메일주소를 입력하세요.")
         }
     }function showMsg(m){

@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public interface LoginService {
 
-    public MemberVO chkUser(String id);
+    public MemberVO chkUser(String ID);
 
     public int signUp(MemberVO member);
 
-    public boolean dupliChkId(String id);
+    public boolean dupliChkId(String ID);
 
     public ArrayList<String> findId(MemberVO member);
 

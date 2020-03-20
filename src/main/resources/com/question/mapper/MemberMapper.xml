@@ -5,23 +5,23 @@
 <mapper namespace="com.question.mapper.MemberMapper">
 
     <select id="chkUser" resultType="com.question.domain.MemberVO">
-        select * from tbl_member where id = #{id}
+        select * from USER_TB where ID = #{ID}
     </select>
 
     <insert id="signUp">
-        insert into tbl_member values( #{id}, #{password}, #{name}, #{email}, #{phone}, now())
+        insert into USER_TB(NAME, ID, PWD, PHONE, MAIL) values(#{NAME}, #{ID}, #{PWD}, #{PHONE}, #{MAIL})
     </insert>
 
     <select id="dupliChkId" resultType="string">
-        select id from tbl_member
+        select ID from USER_TB
     </select>
 
     <select id = "findId" resultType = "com.question.domain.MemberVO">
-        select id from tbl_member where name = #{name} and phone = #{phone}
+        select ID from USER_TB where NAME = #{NAME} and PHONE = #{PHONE}
     </select>
 
     <select id = "findPw" resultType = "com.question.domain.MemberVO">
-        select password from tbl_member where id = #{id} and email = #{email}
+        select PWD from USER_TB where ID = #{ID} and MAIL = #{MAIL}
     </select>
 
 </mapper>

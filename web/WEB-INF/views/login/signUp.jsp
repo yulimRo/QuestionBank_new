@@ -27,15 +27,15 @@
                         <div class="col-9">
                             <div class="form-group">
                                 <div class="form-label-group">
-                                    <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required="required"autofocus="autofocus">
-                                    <label for="id">아이디</label>
+                                    <input type="text" name="ID" id="ID" class="form-control" placeholder="아이디" required="required"autofocus="autofocus">
+                                    <label for="ID">아이디</label>
                                     <div  class="text-left mt-1" id="dupli"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-3 text-left">
                             <div class="form-group">
-                                <button class="btn btn-primary mt-1" id="ajax01" onclick="clkDuplicated()" > 중복확인  </button>
+                                <button class="btn btn-primary mt-1" id="ajax01" onclick="clkDuplicated()" >중복확인</button>
 
                             </div>
                         </div>
@@ -43,36 +43,36 @@
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호"
+                        <input type="password" name="PWD" id="PWD" class="form-control" placeholder="비밀번호"
                                required="required">
-                        <label for="password">비밀번호</label>
+                        <label for="PWD">비밀번호</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" name="password2" id="passwordConfirm" class="form-control" placeholder="비밀번호 확인"
+                        <input type="password" name="PWD2" id="passwordConfirm" class="form-control" placeholder="비밀번호 확인"
                                required="required">
                         <label for="passwordConfirm">비밀번호 확인</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" name="name" id="name" class="form-control" placeholder="이름"
+                        <input type="text" name="NAME" id="NAME" class="form-control" placeholder="이름"
                                required="required"
                                autofocus="autofocus">
-                        <label for="name">이름</label>
+                        <label for="NAME">이름</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="email" name="email" id="email" class="form-control" placeholder="이메일"
+                        <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="이메일"
                                required="required">
-                        <label for="email">이메일</label>
+                        <label for="MAIL">이메일</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" name="phone" id="phone" class="form-control" placeholder="휴대폰"
+                        <input type="text" name="PHONE" id="PHONE" class="form-control" placeholder="휴대폰"
                                required="required">
                         <label for="phone">휴대폰</label>
                     </div>
@@ -123,9 +123,9 @@
                 var ajax = new XMLHttpRequest();
 
                 function clkDuplicated() {
-                    var tid = document.getElementById('id');
+                    var tid = document.getElementById('ID');
                     ajax.onreadystatechange = callbackJson;
-                    ajax.open('GET', '/login/dupliId?id=' + tid.value);
+                    ajax.open('GET', '/login/dupliId?ID=' + tid.value);
                     ajax.setRequestHeader('Accept', 'application/json');
                     ajax.send();
                 }
