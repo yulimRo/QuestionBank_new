@@ -123,7 +123,7 @@ else{}
               <img class="col-4" src="/resources/pic/groupimg.png">
               <ul class="list-unstyled col-4">
                 <li><strong><c:out value="${list.group_name}"/></strong></li>
-                <li><c:out value="${list.cate_code1}"/></li>
+                <li><c:out value=""/></li>
               </ul>
               <input  type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>
