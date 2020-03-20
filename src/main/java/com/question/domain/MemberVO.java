@@ -7,12 +7,13 @@ import java.util.Date;
 @Data
 public class MemberVO {
 
-    private String id;
-    private String password;
-    private String name;
-    private String email;
-    private String phone;
-    private Date regdate;
+    private String ID;
+    private String PWD;
+    private String NAME;
+    private String MAIL;
+    private String PHONE;
+    private Date REG_TIME;
+    private Date UPDATE_TIME;
 
 }
 

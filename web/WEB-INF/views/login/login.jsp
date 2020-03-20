@@ -9,6 +9,7 @@
 
 <html>
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,9 +23,18 @@
 
     <!-- Custom styles for this template-->
     <link href="/resources/css/sb-admin.css" rel="stylesheet">
+
 </head>
 
 <body class="bg-dark">
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+        $(".sidebar-nav").attr("class", "sidebar-nav navbar-collapse collapse").attr("aria-expanded", 'false').attr("style", "height:1px");
+    });
+</script>
 
 <div class="header">
     <h1>Moonjaeeunhaeng App</h1>
@@ -36,16 +46,16 @@
             <form action="/login/check" method="get">
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" name = "id" id="id" class="form-control" placeholder="아이디" required="required"
+                        <input type="text" name = "ID" id="ID" class="form-control" placeholder="아이디" required="required"
                                autofocus="autofocus">
-                        <label for="id">아이디</label>
+                        <label for="ID">아이디</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" name = "password" id="password" class="form-control" placeholder="비밀번호"
+                        <input type="password" name = "PWD" id="PWD" class="form-control" placeholder="비밀번호"
                                required="required">
-                        <label for="password">비밀번호</label>
+                        <label for="PWD">비밀번호</label>
                     </div>
                 </div>
                 <input class="btn btn-primary btn-block" type="submit" value="Login"/>
@@ -66,8 +76,8 @@
 
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="/login/signUp">회원가입</a>
-                <a class="d-block small" href="/login/userSearch" id="find_id_btn">아이디/비밀번호 찾기</a>
+                <a class="d-block small mt-3" href="/login/">회원가입</a>
+                <a class="d-block small" href="/login/userSearch/" id="find_id_btn">아이디/비밀번호 찾기</a>
             </div>
         </div>
     </div>

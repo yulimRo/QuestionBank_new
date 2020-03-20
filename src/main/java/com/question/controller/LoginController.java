@@ -33,7 +33,7 @@ public class LoginController {
     private EmailSender emailSender;
 
     @Setter(onMethod_ = @Autowired)
-    private Email email;
+    private Email MAIL;
 
     @RequestMapping("/userSearch")
     public String userSearch(){return "/login/userSearch";}
@@ -54,19 +54,19 @@ public class LoginController {
     @GetMapping("/check")
     public String loginForm(Model model, @RequestParam HashMap hash) {
 
-        String id = (String) hash.get("id");
-        String password = (String) hash.get("password");
+        String ID = (String) hash.get("ID");
+        String PWD = (String) hash.get("PWD");
 
-        log.info("id =............................. " + id);
-        log.info("password ...................= " + password);
+        log.info("id =............................. " + ID);
+        log.info("password ...................= " + PWD);
 
-        MemberVO member = service.chkUser(id);
+        MemberVO member = service.chkUser(ID);
 
         System.out.println("member = " + member);
-        if (member.getPassword().equals(password)) {
-            log.info(member.getName()+"님 로그인 success");
+        if (member.getPWD().equals(PWD)) {
+            log.info(member.getNAME()+"님 로그인 success");
             model.addAttribute("testtest", "success");
-            model.addAttribute("id", member.getId());
+            model.addAttribute("ID", member.getID());
         } else {
             log.info("로그인 fail");
             model.addAttribute("testtest", "fail");
@@ -88,14 +88,14 @@ public class LoginController {
 
     @RequestMapping("/dupliId")
     @ResponseBody
-    public JSONObject signUp(@RequestParam String id) {
+    public JSONObject signUp(@RequestParam String ID) {
 
-        System.out.println("id = " + id);
+        System.out.println("id = " + ID);
         JSONObject jsonObject = new JSONObject();
 
 
-        if(service.dupliChkId(id)) {
-            System.out.println(service.dupliChkId(id));
+        if(service.dupliChkId(ID)) {
+            System.out.println(service.dupliChkId(ID));
             jsonObject.put("result", "중복된 아이디 입니다.");
         } else {
             jsonObject.put("result", "사용가능한 아이디 입니다.");
@@ -121,15 +121,15 @@ public class LoginController {
     @RequestMapping("/sendpw.do")
     public ModelAndView sendEmailAction (@RequestParam Map<String, Object> paramMap, ModelMap model, MemberVO member) throws Exception {
         ModelAndView mav;
-        String id=(String) paramMap.get("id");
-        String e_mail=(String) paramMap.get("email");
+        String id=(String) paramMap.get("ID");
+        String e_mail=(String) paramMap.get("MAIL");
         ArrayList<String> pw=service.findPw(member);
         System.out.println(pw);
         if(pw!=null) {
-            email.setContent("비밀번호는 "+pw+" 입니다.");
-            email.setReceiver(e_mail);
-            email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
-            emailSender.SendEmail(email);
+            MAIL.setContent("비밀번호는 "+pw+" 입니다.");
+            MAIL.setReceiver(e_mail);
+            MAIL.setSubject(id+"님 비밀번호 찾기 메일입니다.");
+            emailSender.SendEmail(MAIL);
             mav= new ModelAndView("redirect:/login/login");
         }
         else {

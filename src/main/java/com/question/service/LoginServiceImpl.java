@@ -26,9 +26,9 @@ public class LoginServiceImpl implements LoginService {
     private MemberDAO dao;
 
     @Override
-    public MemberVO chkUser(String id) {
+    public MemberVO chkUser(String ID) {
         log.info("checkUser...................");
-        return mapper.chkUser(id);
+        return mapper.chkUser(ID);
     }
 
     @Override
@@ -38,11 +38,11 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public boolean dupliChkId(String id) {
+    public boolean dupliChkId(String ID) {
         log.info("dupliChkId...................");
         List<String> arr = mapper.dupliChkId();
         for(int i = 0; i<arr.size(); i++){
-            if(arr.get(i).equals(id)){
+            if(arr.get(i).equals(ID)){
                 return true;
             }
         }
@@ -56,7 +56,7 @@ public class LoginServiceImpl implements LoginService {
         List<MemberVO> list = dao.findId(vo);
         ArrayList<String> findId = new ArrayList<String>();
         for(int i =0; i <list.size(); i ++) {
-            String id = list.get(i).getId();
+            String id = list.get(i).getID();
             findId.add(id);
         }
         return findId;
@@ -69,7 +69,7 @@ public class LoginServiceImpl implements LoginService {
         List<MemberVO> list = dao.findPw(member);
         ArrayList<String> findPw = new ArrayList<String>();
         for(int i =0; i <list.size(); i ++) {
-            String id = list.get(i).getPassword();
+            String id = list.get(i).getPWD();
             findPw.add(id);
         }
         return findPw;

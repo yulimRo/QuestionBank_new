@@ -1,20 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-  String memberId = (String) session.getAttribute("MEMBERID");
-  boolean login = memberId != null;
+<%--<%--%>
+<%--  String memberId = (String) session.getAttribute("MEMBERID");--%>
+<%--  boolean login = memberId != null;--%>
 
-  if (!login) {
-%>
-<script>
-  alert("로그인 먼저 해주세요.");
-  window.location.href = "/login/login";
-</script>
-<%
-}
-else{}
-%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--  if (!login) {--%>
+<%--%>--%>
+<%--<script>--%>
+<%--  alert("로그인 먼저 해주세요.");--%>
+<%--  window.location.href = "/login/login";--%>
+<%--</script>--%>
+<%--<%--%>
+<%--}--%>
+<%--else{--%>
+<%--%>--%>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,12 +118,12 @@ else{}
         </div>
         <div class="card-body">
           <c:forEach items="${rank}" var="list">
-            <div><c:out value="${list.group_code}"/></div>
+            <div><c:out value="${list.rno}"/></div>
             <div class="form-inline">
               <img class="col-4" src="/resources/pic/groupimg.png">
               <ul class="list-unstyled col-4">
-                <li><strong><c:out value="${list.group_name}"/></strong></li>
-                <li><c:out value=""/></li>
+                <li><strong><c:out value="${list.gname}"/></strong></li>
+                <li><c:out value="${list.grouptag1}"/></li>
               </ul>
               <input  type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>
