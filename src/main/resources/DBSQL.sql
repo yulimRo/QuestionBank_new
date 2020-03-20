@@ -4,7 +4,8 @@ drop database testdb;
 
 create database testdb;
 
-use testdb
+use testdb;
+
 create table tb1_board(
                           bno int,
                           title varchar(2000),
@@ -82,10 +83,9 @@ insert into tb1_reply(rno,bno,reply,replyer) values(27,20,'이','user');
 insert into tb1_reply(rno,bno,reply,replyer) values(28,20,'삼','user');
 insert into tb1_reply(rno,bno,reply,replyer) values(29,20,'시','user');
 
-
 CREATE TABLE USER_TB
 (
-    USER_CODE             INT  NOT NULL ,
+    USER_CODE             INT AUTO_INCREMENT NOT NULL ,
     NAME                  VARCHAR(100)  NULL ,
     ID                    VARCHAR(100)  NULL ,
     PWD                   VARCHAR(200)  NULL ,
@@ -97,32 +97,17 @@ CREATE TABLE USER_TB
 );
 
 
-INSERT INTO USER_TB(USER_CODE, NAME, ID, PWD, PHONE, MAIL) VALUES(1, '노유림', 'yl','1111','010-3450-2766','yyj2766@naver.com');
-INSERT INTO USER_TB(USER_CODE, NAME, ID, PWD, PHONE) VALUES(2, '이상욱', 'sw','2222','010-3684-4134');
-INSERT INTO USER_TB(USER_CODE, NAME, ID, PWD, PHONE) VALUES(3, '채아담', 'ad','3333','010-9896-8245');
-INSERT INTO USER_TB(USER_CODE, NAME, ID, PWD, PHONE) VALUES(4, '이소현', 'sh','4444','010-9443-9232');
+INSERT INTO USER_TB(NAME, ID, PWD, PHONE, MAIL) VALUES('노유림', 'yl','1111','010-3450-2766','yyj2766@naver.com');
+INSERT INTO USER_TB(NAME, ID, PWD, PHONE) VALUES('이상욱', 'sw','2222','010-3684-4134');
+INSERT INTO USER_TB(NAME, ID, PWD, PHONE) VALUES('채아담', 'ad','3333','010-9896-8245');
+INSERT INTO USER_TB(NAME, ID, PWD, PHONE) VALUES('이소현', 'sh','4444','010-9443-9232');
 
-
-insert into USER_TB
-(USER_CODE,id,pwd,name,MAIL,phone)
-values(5,'test','1234','이상욱','test@gmail.com','01011111111');
-
-insert into tbl_member values('test2', '1111', 'test2', 'test2@gmail.com', '01022222222');
-create table QuizGroup_old(
-                          gno  int,
-                          gname varchar(100),
-                          groupAdmin varchar(100),
-                          grouptag1 varchar(200),
-                          grouptag2 varchar(200),
-                          groupImg varchar(1000)
-
-);
 /*
  *************** 카테고리 테이블 *******************
  * 카테고리 번호
  * 카테고리 이름
  */
-drop table  CATEGORY_TB
+
 CREATE TABLE CATEGORY_TB
 (
     CATE_CODE             INT  NOT NULL ,
@@ -138,19 +123,6 @@ INSERT INTO CATEGORY_TB(CATE_CODE, CATE_NAME) VALUES(6,'빅데이터');
 INSERT INTO CATEGORY_TB(CATE_CODE, CATE_NAME) VALUES(7,'머신러닝');
 INSERT INTO CATEGORY_TB(CATE_CODE, CATE_NAME) VALUES(8,'파이썬');
 
-drop table QUIZ_CATE_TB
-CREATE TABLE QUIZ_CATE_TB
-(
-    GROUP_CODE            INT  NOT NULL ,
-    GROUP_CATE            INT  NULL ,
-    REG_TIME datetime default sysdate() NULL,
-    UPDATE_TIME datetime default sysdate() NULL,
-    FOREIGN KEY (GROUP_CATE) REFERENCES CATEGORY_TB(CATE_CODE),
-    FOREIGN KEY (GROUP_CODE) REFERENCES QUIZ_GROUP_TB(GROUP_CODE)
-);
-
-
-drop table  QUIZ_GROUP_TB;
 CREATE TABLE QUIZ_GROUP_TB
 (
     GROUP_CODE            INT  NOT NULL ,
@@ -167,13 +139,21 @@ INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PART
 INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(3,'아이고아이고리',2,99);
 
 
+
+CREATE TABLE QUIZ_CATE_TB
+(
+    GROUP_CODE            INT  NOT NULL ,
+    GROUP_CATE            INT  NULL ,
+    REG_TIME datetime default sysdate() NULL,
+    UPDATE_TIME datetime default sysdate() NULL,
+    FOREIGN KEY (GROUP_CATE) REFERENCES CATEGORY_TB(CATE_CODE),
+    FOREIGN KEY (GROUP_CODE) REFERENCES QUIZ_GROUP_TB(GROUP_CODE)
+);
+
+
+
 create index idx_reply on tb1_reply (bno desc, rno asc);
 
-
-
-select group_code, ADMIN_USER_CODE from QUIZ_GROUP_TB;
-
-select distinct GROUP_CODE ,GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where CATE_CODE=GROUP_CATE;
 
 insert into QUIZ_CATE_TB(group_code, group_cate) values (1,3);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (1,7);
@@ -188,3 +168,7 @@ insert into QUIZ_CATE_TB(group_code, group_cate) values (2,5);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (3,6);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (3,2);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (3,8);
+
+
+select group_code ,group_name, name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time
+from( select row_number() over (order by group_code desc) as rno, group_code ,group_name, name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB,USER_TB) as tb1 limit 3;
