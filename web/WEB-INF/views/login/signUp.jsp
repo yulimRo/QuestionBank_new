@@ -29,13 +29,13 @@
                                 <div class="form-label-group">
                                     <input type="text" name="ID" id="ID" class="form-control" placeholder="아이디" required="required"autofocus="autofocus">
                                     <label for="ID">아이디</label>
-                                    <div  class="text-left mt-1" id="dupli"></div>
+                                    <div class="text-left mt-1" id="dupli"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-3 text-left">
                             <div class="form-group">
-                                <button class="btn btn-primary mt-1" id="ajax01" onclick="clkDuplicated()" >중복확인</button>
+                                <button class="btn btn-primary mt-1" id="ajax01" onclick="clkDuplicated()">중복확인</button>
 
                             </div>
                         </div>

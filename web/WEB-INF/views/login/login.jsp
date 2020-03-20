@@ -76,8 +76,8 @@
 
             </form>
             <div class="text-center">
-                <a class="d-block small mt-3" href="/login/">회원가입</a>
-                <a class="d-block small" href="/login/userSearch/" id="find_id_btn">아이디/비밀번호 찾기</a>
+                <a class="d-block small mt-3" href="/login/signUp">회원가입</a>
+                <a class="d-block small" href="/login/userSearch" id="find_id_btn">아이디/비밀번호 찾기</a>
             </div>
         </div>
     </div>

@@ -1,20 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%--%>
-<%--  String memberId = (String) session.getAttribute("MEMBERID");--%>
-<%--  boolean login = memberId != null;--%>
+<%
+  String memberId = (String) session.getAttribute("MEMBERID");
+  boolean login = memberId != null;
 
-<%--  if (!login) {--%>
-<%--%>--%>
-<%--<script>--%>
-<%--  alert("로그인 먼저 해주세요.");--%>
-<%--  window.location.href = "/login/login";--%>
-<%--</script>--%>
-<%--<%--%>
-<%--}--%>
-<%--else{--%>
-<%--%>--%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+  if (!login) {
+%>
+<script>
+  alert("로그인 먼저 해주세요.");
+  window.location.href = "/login/login";
+</script>
+<%
+}
+else{
+  
+}
+%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -46,7 +46,7 @@
                     <div class="form-label-group">
                         <input type="text" id="PHONE" name="PHONE" class="form-control" placeholder="휴대폰번호를 입력"
                                required="required" autofocus="autofocus">
-                        <label for="phone">휴대폰 번호</label>
+                        <label for="PHONE">휴대폰 번호</label>
                     </div>
                 </div>
                 <div class="form-group">
@@ -99,8 +99,8 @@
 
 <script>
     $(document).on('click','#findId',function(){
-        var NAME = $('#NAME').val()
-        var PHONE = $('#PHONE').val()
+        var NAME = $('#NAME').val();
+        var PHONE = $('#PHONE').val();
         var postData = {'NAME' : NAME , 'PHONE' : PHONE};
         $.ajax({
             url:'/login/findingId',
