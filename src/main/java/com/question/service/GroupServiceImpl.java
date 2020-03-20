@@ -1,5 +1,6 @@
 package com.question.service;
 
+import com.question.domain.GroupCateVO;
 import com.question.domain.GroupVO;
 import com.question.mapper.GroupMapper;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,30 @@ public class GroupServiceImpl implements GroupService {
 
         return mapper.getLank2();
     }
+
+    @Override
+    public List<GroupCateVO> getCate() {
+
+        return mapper.getCate();
+    }
+
+    @Override
+    public String readGroupCate(GroupVO group) {
+
+        List<GroupCateVO> groupcate =  mapper.readGroupCate(group.getGroup_code());
+
+        String cates="";
+
+        for(int i =0; i< groupcate.size();i++){
+            if(i==2)
+                break;
+            cates += " #"+ groupcate.get(i).getCate_name();
+        }
+
+        return cates;
+    }
+
+
 }
 
 

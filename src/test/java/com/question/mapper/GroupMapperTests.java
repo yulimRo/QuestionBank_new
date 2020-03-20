@@ -1,5 +1,7 @@
 package com.question.mapper;
 
+import com.question.domain.GroupCateVO;
+import com.question.domain.GroupVO;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -26,5 +28,6 @@ public class GroupMapperTests {
     public void testGetRank2(){
         mapper.getLank2().forEach(board->log.info(board));
     }
+
 
 }

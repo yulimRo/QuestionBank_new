@@ -113,13 +113,13 @@ else{}
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list}" var="board">
+                <c:forEach items="${list}" var="board" varStatus="status">
                   <tr>
                     <td><c:out value="${board.group_code}"/></td>
                     <td>
                       <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
                     <td><c:out value="${board.admin_user_code}"/></td>
-                    <td>#<c:out value="${board.cate_code1}"/>#<c:out value="${board.cate_code2}"/></td>
+                    <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
                   </tr>
                 </c:forEach>
                 </tbody>
@@ -153,15 +153,15 @@ else{}
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list2}" var="board">
+                <c:forEach items="${list2}" var="board" varStatus="status">
                   <tr>
                     <td><c:out value="${board.group_code}"/></td>
                     <td>
                       <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
                     <td><c:out value="${board.admin_user_code}"/></td>
-                    <td>#<c:out value="${board.cate_code1}"/>#<c:out value="${board.cate_code2}"/></td>
+                    <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
                   </tr>
-                </c:forEach>
+                   </c:forEach>
                 </tbody>
               </table>
             </div>
@@ -170,6 +170,7 @@ else{}
           </div>
           <!-- /.panel-body -->
         </div>
+
         <!-- /.panel -->
       </div>
       <!-- /.col-lg-6 -->

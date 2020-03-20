@@ -1,6 +1,7 @@
 package com.question.controller;
 
 import com.question.domain.Criteria;
+import com.question.domain.GroupVO;
 import com.question.service.GroupService;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @Log4j
@@ -24,8 +27,18 @@ public class MainController {
     public void FirstPage(Model model) {
 
         log.info("mainPage");
+
+        String[] codes = new String[100];
+
+        for(int i =0; i <service.getLank().size(); i++){
+            codes[i] = service.readGroupCate(service.getLank().get(i));
+
+        }
+
+
         model.addAttribute("list", service.getLank());
         model.addAttribute("list2", service.getLank2());
+        model.addAttribute("codes", codes);
 
     }
 

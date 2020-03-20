@@ -6,12 +6,21 @@
 
 
     <select id="getLank" resultType="com.question.domain.GroupVO">
-        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,cate_code1,cate_code2,cate_code3,cate_code4,cate_code5,reg_time,update_time from( select row_number() over (order by group_code desc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,cate_code1,cate_code2,cate_code3,cate_code4,cate_code5,reg_time,update_time from QUIZ_GROUP_TB) as tb1  limit 3 ]]>
+        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time from( select row_number() over (order by group_code desc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB) as tb1  limit 3 ]]>
     </select>
 
     <select id="getLank2" resultType="com.question.domain.GroupVO">
-        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,cate_code1,cate_code2,cate_code3,cate_code4,cate_code5,reg_time,update_time from( select row_number() over (order by group_code asc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,cate_code1,cate_code2,cate_code3,cate_code4,cate_code5,reg_time,update_time from QUIZ_GROUP_TB) as tb1  limit 3]]>
+        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time from( select row_number() over (order by group_code asc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB) as tb1  limit 3]]>
     </select>
+
+    <select id="getCate" resultType="com.question.domain.GroupCateVO">
+        <![CDATA[select distinct GROUP_CODE, GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where CATE_CODE=GROUP_CATE]]>
+    </select>
+
+    <select id="readGroupCate" resultType="com.question.domain.GroupCateVO">
+        <![CDATA[select distinct GROUP_CODE, GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where GROUP_CODE = #{group_code} and CATE_CODE=GROUP_CATE]]>
+    </select>
+
 
 </mapper>
 
