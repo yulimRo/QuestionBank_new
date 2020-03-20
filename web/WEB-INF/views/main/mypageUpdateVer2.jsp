@@ -17,6 +17,19 @@ else{
 }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+  if (!login) {
+%>
+<script>
+  alert("로그인 먼저 해주세요.");
+  window.location.href = "/login/login";
+</script>
+<%
+}
+else{
+
+}
+%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,7 +89,7 @@ else{
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">Settings</a>
-        <a class="dropdown-item" href="#">마이페이지</a>
+        <a class="dropdown-item" href="#">Activity Log</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
       </div>
@@ -101,7 +114,7 @@ else{
       <hr/>
       <div class="offset-2 my-3 ">
         <a href="/main/make-group"> <button type="button" class="btn btn-primary mx-3">퀴즈그룹 생성</button></a>
-        <button class="btn btn-primary">회원정보 수정</button>
+        <button class="btn btn-primary">퀴즈그룹 가입</button>
       </div>
 
       <!-- DataTales Example -->
@@ -133,11 +146,34 @@ else{
           </c:forEach>
         </div>
       </div>
+
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
-    <a class="d-block small mt-3 text-center" href="#">회원탈퇴</a>
-    <br/>
+
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
       <div class="container my-auto">

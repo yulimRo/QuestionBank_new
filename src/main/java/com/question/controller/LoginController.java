@@ -112,7 +112,7 @@ public class LoginController {
         ArrayList <String> idList = service.findId(vo);
         System.out.println(idList.toString());
         System.out.println(idList.get(0));
-        String findId = "{\"id\":\""+idList+"\"}";
+        String findId = "{\"ID\":\""+idList+"\"}";
 
         System.out.println(findId);
 
