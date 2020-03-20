@@ -66,4 +66,8 @@ public class MainController {
         model.addAttribute("rank2", service.getLank2());
 
     }
+    @GetMapping("/mypageInformation")
+    public void mypageInformation(){
+
+    }
 }

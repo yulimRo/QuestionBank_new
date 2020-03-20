@@ -123,7 +123,7 @@ else{
         <div class="modal-body">___그룹이 생성되었습니다</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="myPage.jsp">확인</a>
+          <a class="btn btn-primary" href="mypageUpdateVer.jsp">확인</a>
         </div>
       </div>
     </div>
