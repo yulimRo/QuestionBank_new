@@ -71,7 +71,7 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">Settings</a>
-        <a class="dropdown-item" href="/main/myPage">마이페이지</a>
+        <a class="dropdown-item" href="/main/mypageUpdateVer">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
       </div>
@@ -113,13 +113,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list}" var="board">
+                <c:forEach items="${list}" var="board" varStatus="status">
                   <tr>
-                    <td><c:out value="${board.rno}"/></td>
+                    <td><c:out value="${board.group_code}"/></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.gname}"/> </a></td>
-                    <td><c:out value="${board.groupAdmin}"/></td>
-                    <td>#<c:out value="${board.grouptag1}"/>#<c:out value="${board.grouptag2}"/></td>
+                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
+                    <td><c:out value="${board.admin_user_code}"/></td>
+                    <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
                   </tr>
                 </c:forEach>
                 </tbody>
@@ -153,15 +153,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list2}" var="board">
+                <c:forEach items="${list2}" var="board" varStatus="status">
                   <tr>
-                    <td><c:out value="${board.rno}"/></td>
+                    <td><c:out value="${board.group_code}"/></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.gname}"/> </a></td>
-                    <td><c:out value="${board.groupAdmin}"/></td>
-                    <td>#<c:out value="${board.grouptag1}"/>#<c:out value="${board.grouptag2}"/></td>
+                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
+                    <td><c:out value="${board.admin_user_code}"/></td>
+                    <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
                   </tr>
-                </c:forEach>
+                   </c:forEach>
                 </tbody>
               </table>
             </div>
