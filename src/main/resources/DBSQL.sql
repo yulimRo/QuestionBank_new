@@ -137,6 +137,11 @@ CREATE TABLE QUIZ_GROUP_TB
 INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(1,'퀴z퀴z',1,30);
 INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(2,'디비디비딥',2,20);
 INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(3,'아이고아이고리',2,99);
+INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(4,'자바를자바',3,30);
+INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(5,'에이C언어',4,30);
+INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(6,'자료스트럭처',3,99);
+INSERT INTO QUIZ_GROUP_TB(GROUP_CODE, GROUP_NAME, ADMIN_USER_CODE,NUMBER_OF_PARTICIPANTS) VALUES(7,'파이쩐',1,99);
+
 
 
 
@@ -168,7 +173,15 @@ insert into QUIZ_CATE_TB(group_code, group_cate) values (2,5);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (3,6);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (3,2);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (3,8);
+insert into QUIZ_CATE_TB(group_code, group_cate) values (3,8);
 
 
-select group_code ,group_name, name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time
-from( select row_number() over (order by group_code desc) as rno, group_code ,group_name, name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB,USER_TB) as tb1 limit 3;
+
+insert into QUIZ_CATE_TB(group_code, group_cate) values (5,2);
+insert into QUIZ_CATE_TB(group_code, group_cate) values (5,4);
+insert into QUIZ_CATE_TB(group_code, group_cate) values (4,1);
+insert into QUIZ_CATE_TB(group_code, group_cate) values (4,5);
+
+
+insert into QUIZ_CATE_TB(group_code, group_cate) values (6,5);
+insert into QUIZ_CATE_TB(group_code, group_cate) values (7,3);

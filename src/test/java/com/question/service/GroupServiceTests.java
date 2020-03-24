@@ -49,8 +49,8 @@ public class GroupServiceTests {
     @Test
     public void testGetLank(){
 
-        service.getLank().forEach(group -> log.info(group));
-        service.getLank().forEach(group->log.info(group.getGroup_code()));
+        service.getGroup().forEach(group -> log.info(group));
+        service.getGroup().forEach(group->log.info(group.getGroup_code()));
 
     }
 //

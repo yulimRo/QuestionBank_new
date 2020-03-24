@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Data
 public class MemberVO {
+    private int USER_CODE;
     private String ID;
     private String PWD;
     private String NAME;

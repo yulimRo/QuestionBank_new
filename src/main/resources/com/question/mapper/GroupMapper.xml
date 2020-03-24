@@ -5,12 +5,12 @@
 <mapper namespace="com.question.mapper.GroupMapper">
 
 
-    <select id="getLank" resultType="com.question.domain.GroupVO">
-        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time from( select row_number() over (order by group_code desc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB) as tb1  limit 3 ]]>
+    <select id="getGroup" resultType="com.question.domain.GroupVO">
+        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time from( select row_number() over (order by group_code desc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB) as tb1 ]]>
     </select>
 
-    <select id="getLank2" resultType="com.question.domain.GroupVO">
-        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time from( select row_number() over (order by group_code asc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB) as tb1  limit 3]]>
+    <select id="getGroupRV" resultType="com.question.domain.GroupVO">
+        <![CDATA[select group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS ,reg_time,update_time from( select row_number() over (order by group_code asc) as rno, group_code ,group_name, admin_user_code ,NUMBER_OF_PARTICIPANTS,reg_time,update_time from QUIZ_GROUP_TB) as tb1 ]]>
     </select>
 
     <select id="getCate" resultType="com.question.domain.GroupCateVO">
@@ -20,6 +20,16 @@
     <select id="readGroupCate" resultType="com.question.domain.GroupCateVO">
         <![CDATA[select distinct GROUP_CODE, GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where GROUP_CODE = #{group_code} and CATE_CODE=GROUP_CATE]]>
     </select>
+
+    <select id="getAdminUser" resultType="String">
+        <![CDATA[select distinct name from (select group_name,ADMIN_USER_CODE,name from QUIZ_GROUP_TB,USER_TB where USER_CODE = #{userCode}) as tb1 ]]>
+    </select>
+
+    <select id="getMyGroup" resultType="com.question.domain.GroupVO">
+        <![CDATA[select * from QUIZ_GROUP_TB where ADMIN_USER_CODE = #{userCode} ]]>
+    </select>
+
+
 
 
 </mapper>
