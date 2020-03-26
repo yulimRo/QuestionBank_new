@@ -134,4 +134,14 @@ public class MainController {
 
         return "/login/sessionLogout";
     }
+
+    @GetMapping("/groupPage")
+    public void groupPage(){
+
+    }
+
+    @GetMapping("/passwordCheck")
+    public void passwordCheck(){
+
+    }
 }

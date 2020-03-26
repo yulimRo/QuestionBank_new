@@ -83,7 +83,7 @@
         <div class="text-center">
           <a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#makeGroupModal">수정</a>
         </div>
-
+        <a class="d-block small mt-3 text-center" href="#" data-target="#withdrawalModal">회원탈퇴</a>
         <div class="modal fade" id="makeGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
