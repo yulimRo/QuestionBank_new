@@ -17,19 +17,6 @@ else{
 }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-  if (!login) {
-%>
-<script>
-  alert("로그인 먼저 해주세요.");
-  window.location.href = "/login/login";
-</script>
-<%
-}
-else{
-
-}
-%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,8 +109,8 @@ else{
         <div class="form-inline card-header py-3">
           <div class="m-0 col-10 font-weight-bold">
             <select id="groupselectbox">
-              <option value="my">내 그룹</option>
-              <option value="join" selected>가입한 그룹</option>
+              <option value="my" selected>내 그룹</option>
+              <option value="join" >가입한 그룹</option>
             </select>
           </div>
           <div class="text-right">
@@ -131,16 +118,17 @@ else{
 
           </div>
         </div>
-        <div class="card-body">
-          <c:forEach items="${rank2}" var="list">
+        <div id="updatePart" class="card-body">
+          <c:forEach items="${myGroup}" var="list">
             <div><c:out value="${list.group_code}"/></div>
             <div class="form-inline">
               <img class="col-4" src="/resources/pic/groupimg.png">
-              <ul class="list-unstyled col-4">
-                <li><strong><c:out value="${list.group_name}"/></strong></li>
-                <li><c:out value=""/></li>
+              <ul class="list-unstyled col-6">
+                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>
+                <li><p>응시 인원 : <c:out value="${list.number_of_participants}"/></p></li>
+                <li><p>생성 날짜 : <c:out value='${list.reg_time}'/></p></li>
               </ul>
-              <input  type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
+              <input type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>
             <hr/>
           </c:forEach>
@@ -241,10 +229,33 @@ else{
       var selectvalue = $("#groupselectbox").val();
 
       if(selectvalue === 'join'){
-        window.location.href="/main/mypageUpdateVer2"
+        document.getElementById("updatePart").innerHTML ="<c:forEach items='${rank}' var='list'>\n" +
+                "            <div><c:out value='${list.group_code}'/></div>\n" +
+                "            <div class=\"form-inline\">\n" +
+                "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
+                "              <ul class=\"list-unstyled col-4\">\n" +
+                "                <li><strong><c:out value='${list.group_name}'/></strong></li>\n" +
+                "                <li><c:out value=''/></li>\n" +
+                "              </ul>\n" +
+                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
+                "            </div>\n" +
+                "            <hr/>\n" +
+                "          </c:forEach>";
       }
       else{
-        window.location.href="/main/mypageUpdateVer"
+        document.getElementById("updatePart").innerHTML="<c:forEach items='${myGroup}' var='list'>\n" +
+                "            <div><c:out value='${list.group_code}'/></div>\n" +
+                "            <div class=\"form-inline\">\n" +
+                "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
+                "              <ul class=\"list-unstyled col-4\">\n" +
+                "                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>\n" +
+                "                <li><p>응시 인원 : </p><c:out value='${list.number_of_participants}'/></li>\n" +
+                "                <li><p>생성 날짜 : </p><c:out value='${list.reg_time}'/></li>\n" +
+                "              </ul>\n" +
+                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
+                "            </div>\n" +
+                "            <hr/>\n" +
+                "          </c:forEach>";
       }
 
     });

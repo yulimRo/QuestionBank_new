@@ -98,23 +98,26 @@
 <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <script>
-    $(document).on('click','#findId',function(){
-        var NAME = $('#NAME').val();
-        var PHONE = $('#PHONE').val();
-        var postData = {'NAME' : NAME , 'PHONE' : PHONE};
-        $.ajax({
-            url:'/login/findingId',
-            type:'POST',
-            data: postData,
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            async:false,
-            dataType : "json",
-            success:function(data){
-                alert("회원님의 정보로 등록된 이메일은 : "+data.ID.substring(1,data.ID.length-1)+" 입니다.");
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown){
-                alert('정보를 다시 입력해주시길 바랍니다.');
-            }
+    $(document).ready(function () {
+        $('#findId').on('click',function(){
+            var NAME = $('#NAME').val();
+            var PHONE = $('#PHONE').val();
+            var postData = {'NAME' : NAME , 'PHONE' : PHONE};
+
+            $.ajax({
+                url:'/login/findingId',
+                type:'POST',
+                data: postData,
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                async:false,
+                dataType : "json",
+                success:function(data){
+                    alert("회원님의 정보로 등록된 이메일은 : "+data.id.substring(1,data.id.length-1)+" 입니다.");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown){
+                    alert('정보를 다시 입력해주시길 바랍니다.');
+                }
+            });
         });
     });
 </script>

@@ -21,13 +21,17 @@ public class GroupMapperTests {
 
     @Test
     public void testGetRank(){
-        mapper.getLank().forEach(board->log.info(board));
+        mapper.getGroup().forEach(board->log.info(board));
     }
 
     @Test
     public void testGetRank2(){
-        mapper.getLank2().forEach(board->log.info(board));
+        mapper.getGroupRV().forEach(board->log.info(board));
     }
 
+    @Test
+    public void testGetAdminUserName(){
+        log.info(mapper.getAdminUser(2));
+    }
 
 }
