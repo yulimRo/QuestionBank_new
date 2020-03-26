@@ -121,4 +121,9 @@ public class MainController {
     public void questionRegistration(){
 
     }
+
+    @GetMapping("/groupPage")
+    public void groupPage(){
+
+    }
 }

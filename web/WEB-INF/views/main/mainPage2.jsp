@@ -52,8 +52,7 @@
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="검색" aria-label="Search"
-                   aria-describedby="basic-addon2">
+            <input type="text" class="form-control" placeholder="검색" aria-label="Search" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="button">
                     <i class="fas fa-search"></i>
@@ -124,7 +123,7 @@
                                 <li><c:out value="${username[status.index]}"/></li>
                                 <li><c:out value="${codes[status.index]}"/></li>
                                 <li>
-                                  <button class="groupBtn btn btn-primary btn-sm col-8">입장</button>
+                                  <a href="/main/groupPage"><button class="groupBtn btn btn-primary btn-sm col-8">입장</button></a>
                                 </li>
                               </ul>
                             </div>
@@ -189,6 +188,7 @@
     </div>
 </div>
 
+
 <!-- Bootstrap core JavaScript-->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -207,7 +207,6 @@
 <!-- Demo scripts for this page-->
 <script src="/resources/js/demo/datatables-demo.js"></script>
 <script src="/resources/js/demo/chart-area-demo.js"></script>
-
 </body>
 
 </html>
