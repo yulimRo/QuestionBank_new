@@ -42,7 +42,6 @@
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a href="#"><img class="mr-1" src="/resources/pic/backspace.png"/></a>
     <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -115,21 +114,21 @@
                     <div class="panel-body">
                         <div class="row">
                             <c:forEach items="${list}" var="board" varStatus="status">
-                                <div class="col-5 box mb-5" style="float : left">
-                                    <ul class="groupUl">
-                                        <li><img class="groupImg" src="/resources/pic/groupimg.png"></li>
-                                        <li><dd><c:out value="${board.group_name}"/></dd></li>
-                                        <li><c:out value="${username[status.index]}"/></li>
-                                        <li><c:out value="${codes[status.index]}"/></li>
-                                        <li>
-                                            <a href="/main/groupPage"><button class="groupBtn btn btn-primary btn-sm col-8">입장</button></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            <div class="col-5 box mb-5" style="float : left">
+                              <ul class="groupUl">
+                                <li><img class="groupImg" src="/resources/pic/groupimg.png"></li>
+                                <li><dd><c:out value="${board.group_name}"/></dd></li>
+                                <li><c:out value="${username[status.index]}"/></li>
+                                <li><c:out value="${codes[status.index]}"/></li>
+                                <li>
+                                  <button class="groupBtn btn btn-primary btn-sm col-8">입장</button>
+                                </li>
+                              </ul>
+                            </div>
                             </c:forEach>
                             <!-- /.col-md-4 -->
                         </div>
-                        <!-- /.row -->
+                          <!-- /.row -->
                     </div>
                     <!-- /.panel-body -->
                 </div>
@@ -187,7 +186,6 @@
     </div>
 </div>
 
-
 <!-- Bootstrap core JavaScript-->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -206,6 +204,7 @@
 <!-- Demo scripts for this page-->
 <script src="/resources/js/demo/datatables-demo.js"></script>
 <script src="/resources/js/demo/chart-area-demo.js"></script>
+
 </body>
 
 </html>
@@ -221,3 +220,4 @@
 <%--        window.location.href = "/login/sessionLogout";--%>
 <%--    }--%>
 <%--</script>--%>
+

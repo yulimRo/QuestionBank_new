@@ -71,13 +71,13 @@ public class LoginController {
         MemberVO member = service.chkUser(id);
 
         System.out.println("member = " + member);
-        if (member.getPWD().equals(password)) {
-            log.info(member.getNAME()+"님 로그인 success");
-            model.addAttribute("testtest", "success");
-            model.addAttribute("id", member.getID());
-        } else {
-            log.info("로그인 fail");
-            model.addAttribute("testtest", "fail");
+            if (member.getPWD().equals(password)) {
+                log.info(member.getNAME()+"님 로그인 success");
+                model.addAttribute("testtest", "success");
+                model.addAttribute("id", member.getID());
+            } else {
+                log.info("로그인 fail");
+                model.addAttribute("testtest", "fail");
         }
 
         return "/login/sessionLogin";

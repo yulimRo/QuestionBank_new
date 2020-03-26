@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: codke
+  User: 소혀니
   Date: 2020-03-26
   Time: 오전 11:03
   To change this template use File | Settings | File Templates.
@@ -10,6 +10,7 @@
 <%
     String memberId = (String) session.getAttribute("MEMBERID");
     boolean login = memberId != null;
+
     if (!login) {
 %>
 <script>
@@ -19,6 +20,7 @@
 <%
     }
     else{
+
     }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

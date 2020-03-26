@@ -59,10 +59,14 @@
         </div>
       </div>
       <hr>
+      <form action="/main/mypageInformation2" method="post">
 
-      <form action="/" method="post">
+        <label>회원 아이디</label>
+        <input type="text" name="ID" id="ID" class="form-control" value="${id}"
+               required="required">
+
         <div class="form-group">
-          <label>비밀번호</label>
+          <label>비밀번호 수정</label>
           <div class="form-label-group">
             <input type="password" name="PWD" id="PWD" class="form-control" placeholder="비밀번호"
                    required="required">
@@ -98,8 +102,8 @@
           <a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#mypageInformationModal">수정</a>
           <a class="btn btn-secondary btn-block" href="/main/myPage">취소</a>
         </div>
-
-        <div class="modal fade" id="mypageInformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <a class="d-block small mt-3 text-center" href="#" data-target="#withdrawalModal">회원탈퇴</a>
+        <div class="modal fade" id="makeGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -111,7 +115,8 @@
               <div class="modal-body">회원정보가 수정되었습니다</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                <a class="btn btn-primary" href="/main/myPage">확인</a>
+<%--                <a class="btn btn-primary" href="/main/myPage">확인</a>--%>
+                <button class="btn btn-primary" type="submit">확인</button>
               </div>
             </div>
           </div>
@@ -125,6 +130,8 @@
       <!— Core plugin JavaScript—>
       <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-
+    </div>
+  </div>
+</div>
 </body>
 </html>

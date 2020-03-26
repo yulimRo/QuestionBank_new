@@ -2,7 +2,6 @@ package com.question.controller;
 
 import com.question.domain.Criteria;
 import com.question.domain.MemberVO;
-import com.question.persistence.MemberDAO;
 import com.question.service.GroupService;
 import com.question.service.LoginService;
 import lombok.AllArgsConstructor;
@@ -12,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -71,7 +72,7 @@ public class MainController {
     }
 
     @GetMapping("/mainPage2")
-    public void SecondPage(Model model){
+    public void SecondPage(Model model,@RequestParam("ID") String id){
         String[] codes = new String[service.getGroup().size()];
         String[] username = new String[service.getGroup().size()];
 
@@ -87,6 +88,8 @@ public class MainController {
         model.addAttribute("list", service.getGroup());
         model.addAttribute("username",username);
         model.addAttribute("codes", codes);
+        model.addAttribute("loginUser", memberService.chkUser(id));
+
 
     }
     @GetMapping("/make-group")
@@ -108,7 +111,7 @@ public class MainController {
 
     }
     @GetMapping("/mypageInformation")
-    public void mypageInformation(){
+    public void myPageInformation(){
 
     }
 
@@ -119,6 +122,26 @@ public class MainController {
 
     @GetMapping("/questionRegistration")
     public void questionRegistration(){
+
+    }
+    @RequestMapping(value = "/mypageInformation2", method = RequestMethod.POST)
+    public String getmypageInformation(HttpSession session, MemberVO member){
+        log.info("get Change");
+
+        service.mypageInformation2(member);
+
+        session.invalidate();
+
+        return "/login/sessionLogout";
+    }
+
+    @GetMapping("/groupPage")
+    public void groupPage(){
+
+    }
+
+    @GetMapping("/passwordCheck")
+    public void passwordCheck(){
 
     }
 }

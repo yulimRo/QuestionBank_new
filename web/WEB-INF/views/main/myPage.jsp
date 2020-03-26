@@ -96,7 +96,7 @@
       <hr/>
       <div class="offset-2 my-3 ">
         <a href="/main/make-group"> <button type="button" class="btn btn-primary mx-3">퀴즈그룹 생성</button></a>
-        <a href="/main/mypageInformation"><button class="btn btn-primary">회원정보수정</button></a>
+        <a href="/main/passwordCheck"><button class="btn btn-primary">회원정보수정</button></a>
       </div>
 
       <!-- DataTales Example -->
@@ -129,14 +129,39 @@
           </c:forEach>
         </div>
       </div>
+
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
+
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright © Your Website 2020</span>
+          <span>Copyright © Your Website 2019</span>
         </div>
       </div>
     </footer>
@@ -166,7 +191,7 @@
       <div class="modal-body">현재 세션을 종료할 준비가 되면 아래에서 "로그아웃"을 선택하십시오.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-        <a class="btn btn-primary" href="../login/sessionLogout">로그아웃</a>
+        <a class="btn btn-primary" href="/login/login">로그아웃</a>
       </div>
     </div>
   </div>

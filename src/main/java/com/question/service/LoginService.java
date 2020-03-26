@@ -16,4 +16,5 @@ public interface LoginService {
 
     public ArrayList<String> findPw(MemberVO member);
 
+
 }
