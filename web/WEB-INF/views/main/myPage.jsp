@@ -3,7 +3,6 @@
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
   boolean login = memberId != null;
-
   if (!login) {
 %>
 <script>
@@ -11,10 +10,9 @@
   window.location.href = "/login/login";
 </script>
 <%
-}
-else{
-
-}
+  }
+  else{
+  }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -199,11 +197,8 @@ else{
 
 <script>
   $(document).ready(function () {
-
-
     $("#groupselectbox").on("change",function(){
       var selectvalue = $("#groupselectbox").val();
-
       if(selectvalue === 'join'){
         document.getElementById("updatePart").innerHTML ="<c:forEach items='${rank}' var='list'>\n" +
                 "            <div><c:out value='${list.group_code}'/></div>\n" +
@@ -233,12 +228,9 @@ else{
                 "            <hr/>\n" +
                 "          </c:forEach>";
       }
-
     });
-
     $("#editbtn").on("click",function(){
       $(".editgroupbtn").attr("type","button");
-
     });
   });
 </script>

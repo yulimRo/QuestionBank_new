@@ -3,7 +3,6 @@
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
   boolean login = memberId != null;
-
   if (!login) {
 %>
 <script>
@@ -11,10 +10,9 @@
   window.location.href = "/login/login";
 </script>
 <%
-}
-else{
-
-}
+  }
+  else{
+  }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -45,7 +43,7 @@ else{
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
+  <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>
@@ -163,7 +161,7 @@ else{
                     <td><c:out value="${username2[status.index]}"/></td>
                     <td><h6 class=""><c:out value="${codes2[status.index]}"/></h6></td>
                   </tr>
-                   </c:forEach>
+                </c:forEach>
                 </tbody>
               </table>
             </div>
@@ -261,5 +259,3 @@ else{
 <%--        window.location.href = "/login/sessionLogout";--%>
 <%--    }--%>
 <%--</script>--%>
-
-
