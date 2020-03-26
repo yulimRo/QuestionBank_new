@@ -34,7 +34,7 @@
         <property name="port" value="587" />
         <property name="defaultEncoding" value="utf-8"/>
         <property name="username" value="a201758023@hs.ac.kr" />
-        <property name="password" value="gudfo123!" />
+        <property name="password" value="dbfladl12!" />
 
         <property name="javaMailProperties">
             <props>
