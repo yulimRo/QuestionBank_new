@@ -17,13 +17,13 @@ public class MemberDAOmpl implements MemberDAO {
     private SqlSession sqlSession;
 
     private static final String namespace = "com.question.mapper.MemberMapper";
+    private static final String namespace2 = "com.question.mapper.GroupMapper";
 
     @Override
     public List<MemberVO> findId(MemberVO vo) {
         // TODO Auto-generated method stub
         log.info("아이디 찾기 dao 진입");
         log.info(vo.toString());
-
         return sqlSession.selectList(namespace + ".findId" , vo);
 
     }
@@ -34,5 +34,13 @@ public class MemberDAOmpl implements MemberDAO {
         log.info("비밀번호 찾기 dao 진입");
         log.info(vo.toString());
         return sqlSession.selectList(namespace + ".findPw" , vo);
+    }
+
+    @Override
+    public void mypageInformation2(MemberVO vo) {
+        log.info("회원 수정 진입");
+        log.info(vo.toString());
+        sqlSession.update(namespace2 + ".mypageInformation2", vo);
+
     }
 }

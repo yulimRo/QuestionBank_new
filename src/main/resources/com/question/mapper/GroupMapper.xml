@@ -21,6 +21,12 @@
         <![CDATA[select distinct GROUP_CODE, GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where GROUP_CODE = #{group_code} and CATE_CODE=GROUP_CATE]]>
     </select>
 
+    <!-- 회원정보 수정 -->
+    <update id="mypageInformation2">
+        update USER_TB
+            set
+                PWD = #{PWD},MAIL = #{MAIL},PHONE = #{PHONE} where ID = #{ID}
+    </update>
 
 </mapper>
 

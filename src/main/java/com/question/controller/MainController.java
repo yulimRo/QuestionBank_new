@@ -1,7 +1,7 @@
 package com.question.controller;
 
 import com.question.domain.Criteria;
-import com.question.domain.GroupVO;
+import com.question.domain.MemberVO;
 import com.question.service.GroupService;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -11,8 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @Log4j
@@ -69,5 +70,15 @@ public class MainController {
     @GetMapping("/mypageInformation")
     public void mypageInformation(){
 
+    }
+    @RequestMapping(value = "/mypageInformation2", method = RequestMethod.POST)
+    public String getmypageInformation(HttpSession session, MemberVO member){
+        log.info("get Change");
+
+        service.mypageInformation2(member);
+
+        session.invalidate();
+
+        return "/login/sessionLogout";
     }
 }
