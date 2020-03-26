@@ -127,7 +127,7 @@
             <div class="modal-body">문제가 등록되었습니다</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                <a class="btn btn-primary" href="/main/mypageUpdateVer">확인</a>
+                <a class="btn btn-primary" href="/main/myPage">확인</a>
             </div>
         </div>
     </div>
