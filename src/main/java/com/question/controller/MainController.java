@@ -70,4 +70,14 @@ public class MainController {
     public void mypageInformation(){
 
     }
+
+    @GetMapping("/testRegistration")
+    public void testRegistration(){
+
+    }
+
+    @GetMapping("/questionRegistration")
+    public void questionRegistration(){
+
+    }
 }
