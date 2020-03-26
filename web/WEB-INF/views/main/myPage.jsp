@@ -42,6 +42,7 @@
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <a href="#"><img class="mr-1" src="/resources/pic/backspace.png"/></a>
   <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
@@ -95,7 +96,7 @@
       <hr/>
       <div class="offset-2 my-3 ">
         <a href="/main/make-group"> <button type="button" class="btn btn-primary mx-3">퀴즈그룹 생성</button></a>
-        <a href="/main/mypageInformation"><button class="btn btn-primary">회원정보수정</button></a>
+        <a href="/main/passwordCheck"><button class="btn btn-primary">회원정보수정</button></a>
       </div>
 
       <!-- DataTales Example -->
@@ -131,7 +132,6 @@
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
-    <a class="d-block small mt-3 text-center" href="#" data-target="#withdrawalModal">회원탈퇴</a>
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
       <div class="container my-auto">

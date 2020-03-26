@@ -126,4 +126,9 @@ public class MainController {
     public void groupPage(){
 
     }
+
+    @GetMapping("/passwordCheck")
+    public void passwordCheck(){
+
+    }
 }

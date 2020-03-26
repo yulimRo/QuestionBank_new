@@ -44,6 +44,7 @@
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <a href="#"><img class="mr-1" src="/resources/pic/backspace.png"/></a>
     <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
