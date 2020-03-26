@@ -121,7 +121,7 @@
                                 <li><c:out value="${username[status.index]}"/></li>
                                 <li><c:out value="${codes[status.index]}"/></li>
                                 <li>
-                                  <button class="groupBtn btn btn-primary btn-sm col-8">입장</button>
+                                    <a href="/main/groupPage"><button class="groupBtn btn btn-primary btn-sm col-8">입장</button></a>
                                 </li>
                               </ul>
                             </div>
