@@ -51,6 +51,14 @@ public class LoginController {
         return "/login/sessionLogout";
     }
 
+    @RequestMapping("/sessionLogin")
+    public void sessionLogin(Model model,@RequestParam("ID") String id){
+
+        model.addAttribute("code",service.chkUser(id).getUSER_CODE());
+
+
+    }
+
     @GetMapping("/check")
     public String loginForm(Model model, @RequestParam HashMap hash) {
 

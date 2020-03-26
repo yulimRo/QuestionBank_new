@@ -74,7 +74,7 @@
                     <div class="form-label-group">
                         <input type="text" name="PHONE" id="PHONE" class="form-control" placeholder="휴대폰"
                                required="required">
-                        <label for="phone">휴대폰</label>
+                        <label for="PHONE">휴대폰</label>
                     </div>
                 </div>
                 <div class="text-center">

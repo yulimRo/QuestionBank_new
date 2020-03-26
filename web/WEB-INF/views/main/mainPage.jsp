@@ -3,7 +3,6 @@
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
   boolean login = memberId != null;
-
   if (!login) {
 %>
 <script>
@@ -11,10 +10,9 @@
   window.location.href = "/login/login";
 </script>
 <%
-}
-else{
-
-}
+  }
+  else{
+  }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -45,7 +43,7 @@ else{
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-    <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
+  <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>
@@ -73,7 +71,7 @@ else{
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">Settings</a>
-        <a class="dropdown-item" href="/main/mypageUpdateVer">마이페이지</a>
+        <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
       </div>
@@ -115,12 +113,12 @@ else{
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list}" var="board" varStatus="status">
+                <c:forEach items="${list}" var="board" varStatus="status" begin="0" end="2">
                   <tr>
                     <td><c:out value="${board.group_code}"/></td>
                     <td>
                       <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
-                    <td><c:out value="${board.admin_user_code}"/></td>
+                    <td><c:out value="${username[status.index]}"/></td>
                     <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
                   </tr>
                 </c:forEach>
@@ -155,21 +153,23 @@ else{
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${list2}" var="board" varStatus="status">
+                <c:forEach items="${list2}" var="board" varStatus="status" begin="0" end="2">
                   <tr>
                     <td><c:out value="${board.group_code}"/></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
-                    <td><c:out value="${board.admin_user_code}"/></td>
-                    <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
+                      <a><c:out value="${board.group_name}"/> </a></td>
+                    <td><c:out value="${username2[status.index]}"/></td>
+                    <td><h6 class=""><c:out value="${codes2[status.index]}"/></h6></td>
                   </tr>
-                   </c:forEach>
+                </c:forEach>
                 </tbody>
               </table>
             </div>
             <!-- /.table-responsive -->
-            <a class="btn btn-primary btn-block color-palette mb-4" href="/main/mainPage2">더보기</a>
+            <a class="btn btn-primary btn-block color-palette mb-4" href="/main/mainPage2?ID=${loginUser.ID}">더보기</a>
           </div>
+
+
           <!-- /.panel-body -->
         </div>
         <!-- /.panel -->
@@ -246,29 +246,7 @@ else{
 
 </html>
 
-<script type="text/javascript">
-  $(document).ready(function () {
 
-    var result = '<c:out value="${result}"/>';
-
-    checkModal(result);
-
-    history.replaceState({}, null, null);
-
-    function checkModal(result) {
-      if (result === '' || history.state) {
-        return;
-      }
-      if (parseInt(result) > 0) {
-        $('.modal-body').html("게시글" + parseInt(result) + "번이 등록되었습니다.");
-
-        $("#myModal").modal("show");
-      }
-    }
-
-
-  });
-</script>
 
 
 <%--<h2>로그인 : <%=memberId%>--%>
@@ -281,5 +259,3 @@ else{
 <%--        window.location.href = "/login/sessionLogout";--%>
 <%--    }--%>
 <%--</script>--%>
-
-

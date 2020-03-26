@@ -26,15 +26,15 @@ public class GroupServiceImpl implements GroupService {
     private MemberDAO dao;
 
     @Override
-    public List<GroupVO> getLank() {
+    public List<GroupVO> getGroup() {
 
-         return mapper.getLank();
+         return mapper.getGroup();
     }
 
     @Override
-    public List<GroupVO> getLank2() {
+    public List<GroupVO> getGroupRV() {
 
-        return mapper.getLank2();
+        return mapper.getGroupRV();
     }
 
     @Override
@@ -62,6 +62,18 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void mypageInformation2(MemberVO member) {
         dao.mypageInformation2(member);
+    }
+
+    @Override
+    public String getAdminName(int userCode) {
+
+        return mapper.getAdminUser(userCode);
+    }
+
+    @Override
+    public List<GroupVO> getMyGroup(int userCode) {
+
+        return mapper.getMyGroup(userCode);
     }
 
 

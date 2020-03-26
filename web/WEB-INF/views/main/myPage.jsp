@@ -3,7 +3,6 @@
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
   boolean login = memberId != null;
-
   if (!login) {
 %>
 <script>
@@ -11,10 +10,9 @@
   window.location.href = "/login/login";
 </script>
 <%
-}
-else{
-
-}
+  }
+  else{
+  }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -110,7 +108,7 @@ else{
           <div class="m-0 col-10 font-weight-bold">
             <select id="groupselectbox">
               <option value="my" selected>내 그룹</option>
-              <option value="join">가입한 그룹</option>
+              <option value="join" >가입한 그룹</option>
             </select>
           </div>
           <div class="text-right">
@@ -118,28 +116,26 @@ else{
 
           </div>
         </div>
-        <div class="card-body">
-          <c:forEach items="${rank}" var="list">
+        <div id="updatePart" class="card-body">
+          <c:forEach items="${myGroup}" var="list">
             <div><c:out value="${list.group_code}"/></div>
             <div class="form-inline">
               <img class="col-4" src="/resources/pic/groupimg.png">
-              <ul class="list-unstyled col-4">
-                <li><strong><c:out value="${list.group_name}"/></strong></li>
-                <li><c:out value=""/></li>
+              <ul class="list-unstyled col-6">
+                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>
+                <li><p>응시 인원 : <c:out value="${list.number_of_participants}"/></p></li>
+                <li><p>생성 날짜 : <c:out value='${list.reg_time}'/></p></li>
               </ul>
-              <input  type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
+              <input type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>
             <hr/>
           </c:forEach>
         </div>
-
-
       </div>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
     <a class="d-block small mt-3 text-center" href="#" data-target="#withdrawalModal">회원탈퇴</a>
-    <br/>
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
       <div class="container my-auto">
@@ -180,7 +176,6 @@ else{
   </div>
 </div>
 
-
 <!-- Bootstrap core JavaScript-->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -200,26 +195,42 @@ else{
 <script src="/resources/js/demo/datatables-demo.js"></script>
 <script src="/resources/js/demo/chart-area-demo.js"></script>
 
-
 <script>
   $(document).ready(function () {
-
-
     $("#groupselectbox").on("change",function(){
       var selectvalue = $("#groupselectbox").val();
-
       if(selectvalue === 'join'){
-        window.location.href="/main/mypageUpdateVer2"
+        document.getElementById("updatePart").innerHTML ="<c:forEach items='${rank}' var='list'>\n" +
+                "            <div><c:out value='${list.group_code}'/></div>\n" +
+                "            <div class=\"form-inline\">\n" +
+                "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
+                "              <ul class=\"list-unstyled col-4\">\n" +
+                "                <li><strong><c:out value='${list.group_name}'/></strong></li>\n" +
+                "                <li><c:out value=''/></li>\n" +
+                "              </ul>\n" +
+                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
+                "            </div>\n" +
+                "            <hr/>\n" +
+                "          </c:forEach>";
       }
       else{
-        window.location.href="/main/mypageUpdateVer"
+        document.getElementById("updatePart").innerHTML="<c:forEach items='${myGroup}' var='list'>\n" +
+                "            <div><c:out value='${list.group_code}'/></div>\n" +
+                "            <div class=\"form-inline\">\n" +
+                "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
+                "              <ul class=\"list-unstyled col-4\">\n" +
+                "                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>\n" +
+                "                <li><p>응시 인원 : </p><c:out value='${list.number_of_participants}'/></li>\n" +
+                "                <li><p>생성 날짜 : </p><c:out value='${list.reg_time}'/></li>\n" +
+                "              </ul>\n" +
+                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
+                "            </div>\n" +
+                "            <hr/>\n" +
+                "          </c:forEach>";
       }
-
     });
-
     $("#editbtn").on("click",function(){
       $(".editgroupbtn").attr("type","button");
-
     });
   });
 </script>

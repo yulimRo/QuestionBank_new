@@ -5,13 +5,12 @@
     String test = (String)request.getAttribute("testtest");
     String id = (String) request.getAttribute("id");
     String result = (String) request.getAttribute("result");
-
     if(test.equals("success")){
         session.setAttribute("MEMBERID", id);
 %>
 
 <script>
-    window.location.href = "/main/mainPage";
+    window.location.href = "/main/mainPage?id=${id}";
 </script>
 
 
@@ -24,7 +23,6 @@
     history.go(-1);
 </script>
 
-        <%
-
+<%
     }
 %>
