@@ -157,7 +157,7 @@
                   <tr>
                     <td><c:out value="${board.group_code}"/></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
+                      <a><c:out value="${board.group_name}"/> </a></td>
                     <td><c:out value="${username2[status.index]}"/></td>
                     <td><h6 class=""><c:out value="${codes2[status.index]}"/></h6></td>
                   </tr>
@@ -188,7 +188,7 @@
   <footer class="sticky-footer">
     <div class="container my-auto col-5">
       <div class="copyright text-center my-auto">
-        <span>Copyright © Your Website 2019</span>
+        <span>Copyright © Your Website 2020</span>
       </div>
     </div>
   </footer>

@@ -22,6 +22,3 @@ public interface GroupMapper {
 
     public List<GroupVO> getMyGroup(int userCode);
 }
-
-
-

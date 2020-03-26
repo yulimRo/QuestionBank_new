@@ -3,7 +3,6 @@
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
   boolean login = memberId != null;
-
   if (!login) {
 %>
 <script>
@@ -13,7 +12,6 @@
 <%
   }
   else{
-
   }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -63,8 +61,8 @@
         </div>
         <hr>
         <div class="form-group">
-          <label for="selectCategory">카테고리</label>
-          <select id="selectCategory" class="form-control">
+          <label for="disabledSelect">카테고리</label>
+          <select id="disabledSelect" class="form-control">
             <option>카테고리 선택하기</option>
           </select>
         </div>
@@ -105,7 +103,7 @@
         </div>
         <p></p>
         <a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#makeGroupModal">생성</a>
-        <a class="btn btn-secondary btn-block" href="/main/mypageUpdateVer" >취소</a>
+        <a class="btn btn-secondary btn-block" href="/main/myPage" >취소</a>
       </form>
     </div>
   </div>
@@ -123,7 +121,7 @@
       <div class="modal-body">___그룹이 생성되었습니다</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-        <a class="btn btn-primary" href="/main/mypageUpdateVer">확인</a>
+        <a class="btn btn-primary" href="/main/myPage">확인</a>
       </div>
     </div>
   </div>

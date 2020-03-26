@@ -42,9 +42,8 @@
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-  <a class="navbar-brand mr-1" href="index.html">moonjaeeunhaeng app</a>
-
+  <a href="#"><img class="mr-1" src="/resources/pic/backspace.png"/></a>
+  <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>
@@ -52,8 +51,7 @@
   <!-- Navbar Search -->
   <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="검색" aria-label="Search"
-             aria-describedby="basic-addon2">
+      <input type="text" class="form-control" placeholder="검색" aria-label="Search" aria-describedby="basic-addon2">
       <div class="input-group-append">
         <button class="btn btn-primary" type="button">
           <i class="fas fa-search"></i>
@@ -66,15 +64,14 @@
   <ul class="navbar-nav ml-auto ml-md-0">
 
     <li class="nav-item dropdown no-arrow">
-      <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-         aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-        <span class="badge badge-danger"><img src="/resources/pic/사람이미지.png"></span>
+      <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        <span class="badge badge-danger"><img style="width : 75% " src="/resources/pic/사람이미지.png"></span>
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">Settings</a>
-        <a class="dropdown-item" href="#">Activity Log</a>
+        <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
       </div>
@@ -99,7 +96,7 @@
       <hr/>
       <div class="offset-2 my-3 ">
         <a href="/main/make-group"> <button type="button" class="btn btn-primary mx-3">퀴즈그룹 생성</button></a>
-        <button class="btn btn-primary">퀴즈그룹 가입</button>
+        <a href="/main/mypageInformation"><button class="btn btn-primary">회원정보수정</button></a>
       </div>
 
       <!-- DataTales Example -->
@@ -132,39 +129,14 @@
           </c:forEach>
         </div>
       </div>
-
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
-
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright © Your Website 2019</span>
+          <span>Copyright © Your Website 2020</span>
         </div>
       </div>
     </footer>
@@ -194,7 +166,7 @@
       <div class="modal-body">현재 세션을 종료할 준비가 되면 아래에서 "로그아웃"을 선택하십시오.</div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-        <a class="btn btn-primary" href="/login/login">로그아웃</a>
+        <a class="btn btn-primary" href="../login/sessionLogout">로그아웃</a>
       </div>
     </div>
   </div>

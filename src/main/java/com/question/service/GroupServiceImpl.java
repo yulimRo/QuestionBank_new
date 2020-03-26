@@ -23,7 +23,7 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public List<GroupVO> getGroup() {
 
-         return mapper.getGroup();
+        return mapper.getGroup();
     }
 
     @Override
@@ -68,6 +68,3 @@ public class GroupServiceImpl implements GroupService {
 
 
 }
-
-
-

@@ -41,9 +41,28 @@
     <div class="card-header">회원정보 수정</div>
     <div class="card-body">
 
+      <div class="form-group">
+        <label>이름</label>
+        <div class="form-label-group">
+          <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="이름"
+                 required="required" readonly>
+          <label for="MAIL">이름</label>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label>아이디</label>
+        <div class="form-label-group">
+          <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="아이디"
+                 required="required" readonly>
+          <label for="MAIL">아이디</label>
+        </div>
+      </div>
+      <hr>
+
       <form action="/" method="post">
         <div class="form-group">
-          <label>비밀번호 수정</label>
+          <label>비밀번호</label>
           <div class="form-label-group">
             <input type="password" name="PWD" id="PWD" class="form-control" placeholder="비밀번호"
                    required="required">
@@ -59,7 +78,7 @@
         </div>
         <hr>
         <div class="form-group">
-          <label>이메일 변경</label>
+          <label>이메일</label>
           <div class="form-label-group">
             <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="이메일"
                    required="required">
@@ -68,7 +87,7 @@
         </div>
         <hr>
         <div class="form-group">
-          <label>핸드폰 번호 변경</label>
+          <label>핸드폰 번호</label>
           <div class="form-label-group">
             <input type="text" name="PHONE" id="PHONE" class="form-control" placeholder="휴대폰"
                    required="required">
@@ -76,10 +95,11 @@
           </div>
         </div>
         <div class="text-center">
-          <a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#makeGroupModal">수정</a>
+          <a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#mypageInformationModal">수정</a>
+          <a class="btn btn-secondary btn-block" href="/main/myPage">취소</a>
         </div>
 
-        <div class="modal fade" id="makeGroupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="mypageInformationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">

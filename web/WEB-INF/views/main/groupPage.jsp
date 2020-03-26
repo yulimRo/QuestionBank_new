@@ -1,3 +1,10 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: codke
+  Date: 2020-03-26
+  Time: 오전 11:03
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -10,11 +17,11 @@
     window.location.href = "/login/login";
 </script>
 <%
-    } else {
+    }
+    else{
     }
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +54,6 @@
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
-
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -59,14 +65,12 @@
             </div>
         </div>
     </form>
-
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
 
         <li class="nav-item dropdown no-arrow">
-            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 <span class="badge badge-danger"><img style="width : 75% " src="/resources/pic/사람이미지.png"></span>
 
             </a>
@@ -85,79 +89,70 @@
     <div id="content-wrapper">
         <!-- Page Content -->
         <div class="container">
-            <!-- Page Heading -->
-            <!-- Jumbotron Header -->
-            <header class="jumbotron my-4">
-                <h3 class="display-4">헤더 만들었쓔~!</h3>
-                <p class="lead">앱에 대한 설명쓰면 괜찮을 둡..</p>
-                <a href="index2.html" class="btn btn-primary btn-lg">더보기</a>
-            </header>
 
-
-            <!-- table-responsive -->
-            <div class="col-lg-6 mx-auto mt-5">
-                <div class="panel panel-default">
-                    <div class="panel-heading ">
-                        <h5>모든 퀴즈 그룹</h5>
-                    </div>
-                    <!-- /.panel-heading -->
-                    <br>
-                    <div class="input-group col-15">
-                        <input type="text" class="form-control " placeholder="그룹명" aria-label="Search"
-                               aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">검색
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="panel-body">
-                        <div class="row">
-                            <c:forEach items="${list}" var="board" varStatus="status">
-                                <div class="col-5 box mb-5" style="float : left">
-                                    <ul class="groupUl">
-                                        <li><img class="groupImg" src="/resources/pic/groupimg.png"></li>
-                                        <li><dd><c:out value="${board.group_name}"/></dd></li>
-                                        <li><c:out value="${username[status.index]}"/></li>
-                                        <li><c:out value="${codes[status.index]}"/></li>
-                                        <li>
-                                            <a href="/main/groupPage"><button class="groupBtn btn btn-primary btn-sm col-8">입장</button></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </c:forEach>
-                            <!-- /.col-md-4 -->
-                        </div>
-                        <!-- /.row -->
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
+            <!-- Project One -->
+            <div class="form-inline">
+                <img class="mx-3" src="/resources/pic/사람이미지.png"/>
+                <ul class="list-unstyled col-4">
+                    <li class="h3 mb-2 text-gray-800">그룹 이름</li>
+                    <li>그룹 소개</li>
+                </ul>
             </div>
-            <!-- /.col-lg-6 -->
+            <div>
+                <ul class="list-unstyled form-inline">
+                    <a href="#"><li class="mx-3">#카테고리</li></a>
+                    <a href="#"><li class="mx-2">#카테고리</li></a>
+                </ul>
+            </div>
+            <hr/>
+            <div class="offset-2 my-3 ">
+                <a href="/main/testRegistration"> <button type="button" class="btn btn-primary mx-3">시험 등록하기</button></a>
+                <a href="/main/questionRegistration"><button class="btn btn-primary">문제 등록하기</button></a>
+            </div>
 
-
-            <!-- /.panel -->
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="form-inline card-header py-3">
+                    <div class="m-0 col-10 font-weight-bold">
+                        그룹 정보
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>인원 수</div>
+                    <ul class="list-unstyled form-inline ">
+                        <li class="mx-2"><img  style="width : 35%" src="/resources/pic/사람이미지.png"/>노유림</li>
+                        <li class="mx-2"><img  style="width : 35%" src="/resources/pic/사람이미지.png"/>이상욱</li>
+                        <li class="mx-2"><img style="width : 35%" src="/resources/pic/사람이미지.png"/>이소현</li>
+                        <li class="mx-2"><img style="width : 35%" src="/resources/pic/사람이미지.png"/>채아담</li>
+                    </ul>
+                    <hr/>
+                    <div>시험수 </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>번호</th>
+                            <th>시험명</th>
+                            <th>기간</th>
+                            <th>응시현황</th>
+                            <th>완료여부</th>
+                            <th>평균</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <!-- /.container -->
         </div>
-        <!-- /.col-lg-6 -->
+        <!-- /.container-fluid -->
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © Your Website 2019</span>
+                </div>
+            </div>
+        </footer>
 
     </div>
-    <!-- /.container -->
-</div>
-<!-- /.container-fluid -->
-
-<!-- Sticky Footer -->
-<footer class="sticky-footer">
-    <div class="container my-auto col-5">
-        <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-        </div>
-    </div>
-</footer>
-
-</div>
-<!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
 
 </div>
 <!-- /#wrapper -->
@@ -181,12 +176,11 @@
             <div class="modal-body">현재 세션을 종료할 준비가 되면 아래에서 "로그아웃"을 선택하십시오.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                <a class="btn btn-primary" href="../login/sessionLogout">로그아웃</a>
+                <a class="btn btn-primary" href="/login/login">로그아웃</a>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- Bootstrap core JavaScript-->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
@@ -206,18 +200,7 @@
 <!-- Demo scripts for this page-->
 <script src="/resources/js/demo/datatables-demo.js"></script>
 <script src="/resources/js/demo/chart-area-demo.js"></script>
+
 </body>
 
 </html>
-
-
-<%--<h2>로그인 : <%=memberId%>--%>
-<%--</h2>--%>
-<%--<button onclick="clkLogout()">로그아웃</button>--%>
-
-<%--<script>--%>
-<%--    function clkLogout() {--%>
-<%--        alert("로그아웃 되었습니다.");--%>
-<%--        window.location.href = "/login/sessionLogout";--%>
-<%--    }--%>
-<%--</script>--%>
