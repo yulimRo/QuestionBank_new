@@ -10,4 +10,6 @@ public interface MemberDAO {
 
     public List<MemberVO> findPw(MemberVO vo);
 
+    public void mypageInformation2(MemberVO vo);
+
 }

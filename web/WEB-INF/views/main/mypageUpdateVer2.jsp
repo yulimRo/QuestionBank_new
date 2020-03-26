@@ -1,24 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-  String memberId = (String) session.getAttribute("MEMBERID");
-  boolean login = memberId != null;
-  if (!login) {
-%>
-<script>
-  alert("로그인 먼저 해주세요.");
-  window.location.href = "/login/login";
-</script>
-<%
-  }
-  else{
-  }
-%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,8 +21,9 @@
 <body id="page-top">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-  <a href="#"><img class="mr-1" src="/resources/pic/backspace.png"/></a>
-  <a class="navbar-brand mr-1" href="mainPage2.jsp">App Mark</a>
+
+  <a class="navbar-brand mr-1" href="index.html">moonjaeeunhaeng app</a>
+
   <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
     <i class="fas fa-bars"></i>
   </button>
@@ -51,7 +31,8 @@
   <!-- Navbar Search -->
   <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="검색" aria-label="Search" aria-describedby="basic-addon2">
+      <input type="text" class="form-control" placeholder="검색" aria-label="Search"
+             aria-describedby="basic-addon2">
       <div class="input-group-append">
         <button class="btn btn-primary" type="button">
           <i class="fas fa-search"></i>
@@ -64,14 +45,15 @@
   <ul class="navbar-nav ml-auto ml-md-0">
 
     <li class="nav-item dropdown no-arrow">
-      <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-        <span class="badge badge-danger"><img style="width : 75% " src="/resources/pic/사람이미지.png"></span>
+      <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+        <span class="badge badge-danger"><img src="/resources/pic/사람이미지.png"></span>
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="#">Settings</a>
-        <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
+        <a class="dropdown-item" href="#">Activity Log</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
       </div>
@@ -96,7 +78,7 @@
       <hr/>
       <div class="offset-2 my-3 ">
         <a href="/main/make-group"> <button type="button" class="btn btn-primary mx-3">퀴즈그룹 생성</button></a>
-        <a href="/main/passwordCheck"><button class="btn btn-primary">회원정보수정</button></a>
+        <button class="btn btn-primary">퀴즈그룹 가입</button>
       </div>
 
       <!-- DataTales Example -->
@@ -104,8 +86,8 @@
         <div class="form-inline card-header py-3">
           <div class="m-0 col-10 font-weight-bold">
             <select id="groupselectbox">
-              <option value="my" selected>내 그룹</option>
-              <option value="join" >가입한 그룹</option>
+              <option value="my">내 그룹</option>
+              <option value="join" selected>가입한 그룹</option>
             </select>
           </div>
           <div class="text-right">
@@ -113,30 +95,54 @@
 
           </div>
         </div>
-        <div id="updatePart" class="card-body">
-          <c:forEach items="${myGroup}" var="list">
+        <div class="card-body">
+          <c:forEach items="${rank2}" var="list">
             <div><c:out value="${list.group_code}"/></div>
             <div class="form-inline">
               <img class="col-4" src="/resources/pic/groupimg.png">
-              <ul class="list-unstyled col-6">
-                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>
-                <li><p>응시 인원 : <c:out value="${list.number_of_participants}"/></p></li>
-                <li><p>생성 날짜 : <c:out value='${list.reg_time}'/></p></li>
+              <ul class="list-unstyled col-4">
+                <li><strong><c:out value="${list.group_name}"/></strong></li>
+                <li><c:out value=""/></li>
               </ul>
-              <input type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
+              <input  type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>
             <hr/>
           </c:forEach>
         </div>
       </div>
+
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
+
     <!-- Sticky Footer -->
     <footer class="sticky-footer">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright © Your Website 2020</span>
+          <span>Copyright © Your Website 2019</span>
         </div>
       </div>
     </footer>
@@ -193,40 +199,23 @@
 
 <script>
   $(document).ready(function () {
+
+
     $("#groupselectbox").on("change",function(){
       var selectvalue = $("#groupselectbox").val();
+
       if(selectvalue === 'join'){
-        document.getElementById("updatePart").innerHTML ="<c:forEach items='${rank}' var='list'>\n" +
-                "            <div><c:out value='${list.group_code}'/></div>\n" +
-                "            <div class=\"form-inline\">\n" +
-                "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
-                "              <ul class=\"list-unstyled col-4\">\n" +
-                "                <li><strong><c:out value='${list.group_name}'/></strong></li>\n" +
-                "                <li><c:out value=''/></li>\n" +
-                "              </ul>\n" +
-                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
-                "            </div>\n" +
-                "            <hr/>\n" +
-                "          </c:forEach>";
+        window.location.href="/main/mypageUpdateVer2"
       }
       else{
-        document.getElementById("updatePart").innerHTML="<c:forEach items='${myGroup}' var='list'>\n" +
-                "            <div><c:out value='${list.group_code}'/></div>\n" +
-                "            <div class=\"form-inline\">\n" +
-                "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
-                "              <ul class=\"list-unstyled col-4\">\n" +
-                "                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>\n" +
-                "                <li><p>응시 인원 : </p><c:out value='${list.number_of_participants}'/></li>\n" +
-                "                <li><p>생성 날짜 : </p><c:out value='${list.reg_time}'/></li>\n" +
-                "              </ul>\n" +
-                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
-                "            </div>\n" +
-                "            <hr/>\n" +
-                "          </c:forEach>";
+        window.location.href="/main/mypageUpdateVer"
       }
+
     });
+
     $("#editbtn").on("click",function(){
       $(".editgroupbtn").attr("type","button");
+
     });
   });
 </script>

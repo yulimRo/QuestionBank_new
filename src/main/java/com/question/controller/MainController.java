@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -120,6 +123,16 @@ public class MainController {
     @GetMapping("/questionRegistration")
     public void questionRegistration(){
 
+    }
+    @RequestMapping(value = "/mypageInformation2", method = RequestMethod.POST)
+    public String getmypageInformation(HttpSession session, MemberVO member){
+        log.info("get Change");
+
+        service.mypageInformation2(member);
+
+        session.invalidate();
+
+        return "/login/sessionLogout";
     }
 
     @GetMapping("/groupPage")

@@ -31,6 +31,12 @@
 
 
 
+    <!-- 회원정보 수정 -->
+    <update id="mypageInformation2">
+        update USER_TB
+            set
+                PWD = #{PWD},MAIL = #{MAIL},PHONE = #{PHONE} where ID = #{ID}
+    </update>
 
 </mapper>
 

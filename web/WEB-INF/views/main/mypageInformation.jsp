@@ -41,8 +41,13 @@
     <div class="card-header">회원정보 수정</div>
     <div class="card-body">
 
-      <form action="/" method="post">
-        <div class="form-group">
+      <form action="/main/mypageInformation2" method="post">
+
+          <label>회원 아이디</label>
+            <input type="text" name="ID" id="ID" class="form-control" value="${id}"
+                   required="required">
+
+          <div class="form-group">
           <label>비밀번호 수정</label>
           <div class="form-label-group">
             <input type="password" name="PWD" id="PWD" class="form-control" placeholder="비밀번호"
@@ -91,7 +96,8 @@
               <div class="modal-body">회원정보가 수정되었습니다</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                <a class="btn btn-primary" href="/main/myPage">확인</a>
+<%--                <a class="btn btn-primary" href="/main/myPage">확인</a>--%>
+                <button class="btn btn-primary" type="submit">확인</button>
               </div>
             </div>
           </div>
@@ -105,6 +111,8 @@
       <!— Core plugin JavaScript—>
       <script src="/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-
+    </div>
+  </div>
+</div>
 </body>
 </html>
