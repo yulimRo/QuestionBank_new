@@ -70,7 +70,6 @@
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#">Settings</a>
         <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
@@ -115,9 +114,9 @@
                 <tbody>
                 <c:forEach items="${list}" var="board" varStatus="status" begin="0" end="2">
                   <tr>
-                    <td><c:out value="${board.group_code}"/></td>
+                    <td></td>
                     <td>
-                      <a href ='/main/mainPage2'><c:out value="${board.group_name}"/> </a></td>
+                      <a href="/main/groupPage?group_code=${board.group_code}&ID=${loginUser.ID}"><c:out value="${board.group_name}"/> </a></td>
                     <td><c:out value="${username[status.index]}"/></td>
                     <td><h6 class=""><c:out value="${codes[status.index]}"/></h6></td>
                   </tr>
@@ -155,9 +154,9 @@
                 <tbody>
                 <c:forEach items="${list2}" var="board" varStatus="status" begin="0" end="2">
                   <tr>
-                    <td><c:out value="${board.group_code}"/></td>
+                    <td></td>
                     <td>
-                      <a><c:out value="${board.group_name}"/> </a></td>
+                      <a href="/main/groupPage?group_code=${board.group_code}&ID=${loginUser.ID}"><c:out value="${board.group_name}"/> </a></td>
                     <td><c:out value="${username2[status.index]}"/></td>
                     <td><h6 class=""><c:out value="${codes2[status.index]}"/></h6></td>
                   </tr>
@@ -166,9 +165,12 @@
               </table>
             </div>
             <!-- /.table-responsive -->
-            <a class="btn btn-primary btn-block color-palette mb-4" href="/main/mainPage2?ID=${loginUser.ID}">더보기</a>
+            <button data-oper='mainPage2' class="btn btn-primary btn-block color-palette mb-4" >더보기</button>
           </div>
 
+          <form id="operForm" action="/main/mainPage2" method="get">
+            <input type="hidden" id="ID" name="ID" value="<c:out value='${loginUser.ID}' />"/>
+          </form>
 
           <!-- /.panel-body -->
         </div>
@@ -243,8 +245,30 @@
 <script src="/resources/js/demo/chart-area-demo.js"></script>
 
 </body>
+<script>
+  $(document).ready(function(){
 
+    var result = '<c:out value="${result}"/>';
+
+    checkModal(result);
+
+    history.replaceState({},null,null);
+
+    function checkModal(result){
+      if(result === ''||history.state) {return;}
+    }
+
+    var operForm = $("#operForm");
+
+    $("button[data-oper='mainPage2']").on("click",function(e){
+      operForm.attr("action","/main/mainPage2").submit();
+    });
+
+  });
+
+</script>
 </html>
+
 
 
 

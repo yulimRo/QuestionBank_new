@@ -70,7 +70,6 @@
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#">Settings</a>
         <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
@@ -89,7 +88,7 @@
       <div class="form-inline">
         <img class="mx-3" src="/resources/pic/사람이미지.png"/>
         <ul class="list-unstyled col-4">
-          <li class="h3 mb-2 text-gray-800">이름</li>
+          <li class="h3 mb-2 text-gray-800"><c:out value="${loginUser.NAME}"/></li>
           <li>자기소개</li>
         </ul>
       </div>
@@ -109,8 +108,7 @@
             </select>
           </div>
           <div class="text-right">
-            <button id="editbtn" class="btn btn-default btn-xs btn-outline-primary">편집</button>
-
+            <button id="editbtn" class="btn btn-default btn-xs btn-outline-primary"  >편집</button>
           </div>
         </div>
         <div id="updatePart" class="card-body">
@@ -123,36 +121,13 @@
                 <li><p>응시 인원 : <c:out value="${list.number_of_participants}"/></p></li>
                 <li><p>생성 날짜 : <c:out value='${list.reg_time}'/></p></li>
               </ul>
-              <input type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
+              <input type="hidden" name="hiddenButton" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
             </div>
             <hr/>
           </c:forEach>
         </div>
       </div>
 
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
@@ -250,11 +225,29 @@
                 "          </c:forEach>";
       }
     });
-    $("#editbtn").on("click",function(){
-      $(".editgroupbtn").attr("type","button");
-    });
+
+
+      $("#editbtn").click(function(){
+
+        if($(this).html() == "편집"){
+          $(".editgroupbtn").attr("type", "button");
+          $(this).html("취소");
+        }
+        else{
+          $(".editgroupbtn").attr("type", "hidden");
+          $(this).html("편집");
+        }
+
+      });
+
+
+
+
+
+
   });
 </script>
+
 </body>
 
 </html>

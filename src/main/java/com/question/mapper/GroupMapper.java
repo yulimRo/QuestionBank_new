@@ -21,4 +21,6 @@ public interface GroupMapper {
     public String getAdminUser(int userCode);
 
     public List<GroupVO> getMyGroup(int userCode);
+
+    public GroupVO getOneGroup(int group_code);
 }

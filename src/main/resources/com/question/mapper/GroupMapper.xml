@@ -17,6 +17,7 @@
         <![CDATA[select distinct GROUP_CODE, GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where CATE_CODE=GROUP_CATE]]>
     </select>
 
+
     <select id="readGroupCate" resultType="com.question.domain.GroupCateVO">
         <![CDATA[select distinct GROUP_CODE, GROUP_CATE, CATE_NAME from QUIZ_CATE_TB,CATEGORY_TB where GROUP_CODE = #{group_code} and CATE_CODE=GROUP_CATE]]>
     </select>
@@ -29,6 +30,10 @@
         <![CDATA[select * from QUIZ_GROUP_TB where ADMIN_USER_CODE = #{userCode} ]]>
     </select>
 
+    <select id="getOneGroup" resultType="com.question.domain.GroupVO">
+        <![CDATA[select * from QUIZ_GROUP_TB where group_code = #{group_code} ]]>
+    </select>
+
 
 
     <!-- 회원정보 수정 -->
@@ -37,6 +42,7 @@
             set
                 PWD = #{PWD},MAIL = #{MAIL},PHONE = #{PHONE} where ID = #{ID}
     </update>
+
 
 </mapper>
 

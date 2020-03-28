@@ -44,6 +44,12 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    public List<GroupCateVO> getCate(int group_Code) {
+
+        return mapper.readGroupCate(group_Code);
+    }
+
+    @Override
     public String readGroupCate(GroupVO group) {
 
         List<GroupCateVO> groupcate =  mapper.readGroupCate(group.getGroup_code());
@@ -62,6 +68,11 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public void mypageInformation2(MemberVO member) {
         dao.mypageInformation2(member);
+    }
+
+    @Override
+    public GroupVO getOneGroup(int group_code) {
+        return mapper.getOneGroup(group_code);
     }
 
     @Override
