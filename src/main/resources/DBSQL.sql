@@ -185,3 +185,38 @@ insert into QUIZ_CATE_TB(group_code, group_cate) values (4,5);
 
 insert into QUIZ_CATE_TB(group_code, group_cate) values (6,5);
 insert into QUIZ_CATE_TB(group_code, group_cate) values (7,3);
+
+/*
+ ************************ 퀴즈 그룹 회원 등록 테이블 ********************
+ * 퀴즈 코드
+ * 회원 코드
+ * 승인여부
+*/
+
+use testdb;
+
+drop table QUIZ_GROUP_USER_ENROL_TB
+CREATE TABLE QUIZ_GROUP_USER_ENROL_TB
+(
+    GROUP_CODE            INT  NOT NULL ,
+    USER_CODE             INT  NOT NULL ,
+    IS_SIGN               VARCHAR(2)  default 'N' NULL,
+    REG_TIME datetime default sysdate() NULL,
+    WITHDRAW_TIME datetime default sysdate() NULL,
+    PRIMARY KEY (GROUP_CODE,USER_CODE),
+    FOREIGN KEY (GROUP_CODE) REFERENCES QUIZ_GROUP_TB(GROUP_CODE),
+    FOREIGN KEY (USER_CODE) REFERENCES USER_TB(USER_CODE)
+);
+
+
+select * from QUIZ_GROUP_USER_ENROL_TB;
+
+INSERT INTO QUIZ_GROUP_USER_ENROL_TB (GROUP_CODE, USER_CODE) VALUE (1,2);
+INSERT INTO QUIZ_GROUP_USER_ENROL_TB (GROUP_CODE, USER_CODE) VALUE (1,4);
+INSERT INTO QUIZ_GROUP_USER_ENROL_TB (GROUP_CODE, USER_CODE) VALUE (2,3);
+INSERT INTO QUIZ_GROUP_USER_ENROL_TB (GROUP_CODE, USER_CODE) VALUE (3,4);
+
+delete from QUIZ_GROUP_USER_ENROL_TB  where USER_CODE =3 and GROUP_CODE = 2
+
+
+

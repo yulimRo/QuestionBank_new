@@ -13,5 +13,7 @@
         <![CDATA[select row_number() over (order by gno asc) as rno, gno,gname, groupAdmin,grouptag1,grouptag2 from QuizGroup limit 3 ]]>
     </select>
 
+
+
 </mapper>
 

@@ -43,4 +43,6 @@ public class GroupMapperTests {
         log.info(mapper.readGroupCate(group.getGroup_code()));
     }
 
+
+
 }

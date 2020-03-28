@@ -76,6 +76,11 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
+    public List<GroupVO> getJoinedGroup(int user_code) {
+        return mapper.getJoinedGroup(user_code);
+    }
+
+    @Override
     public String getAdminName(int userCode) {
 
         return mapper.getAdminUser(userCode);

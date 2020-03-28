@@ -30,6 +30,7 @@ public interface GroupService {
 
     public GroupVO getOneGroup(int group_code);
 
+    public List<GroupVO> getJoinedGroup(int user_code);
 
 
 }

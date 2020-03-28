@@ -34,6 +34,10 @@
         <![CDATA[select * from QUIZ_GROUP_TB where group_code = #{group_code} ]]>
     </select>
 
+    <select id="getJoinedGroup" resultType="com.question.domain.GroupVO">
+        <![CDATA[select QUIZ_GROUP_TB.* from USER_TB,QUIZ_GROUP_USER_ENROL_TB,QUIZ_GROUP_TB where QUIZ_GROUP_TB.GROUP_CODE = QUIZ_GROUP_USER_ENROL_TB.GROUP_CODE and QUIZ_GROUP_USER_ENROL_TB.USER_CODE = USER_TB.USER_CODE and USER_TB.USER_CODE=#{user_code} ]]>
+    </select>
+
 
 
     <!-- 회원정보 수정 -->
