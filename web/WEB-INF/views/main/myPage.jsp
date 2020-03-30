@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
   boolean login = memberId != null;
@@ -70,7 +71,6 @@
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#">Settings</a>
         <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
@@ -89,7 +89,7 @@
       <div class="form-inline">
         <img class="mx-3" src="/resources/pic/사람이미지.png"/>
         <ul class="list-unstyled col-4">
-          <li class="h3 mb-2 text-gray-800">이름</li>
+          <li class="h3 mb-2 text-gray-800"><c:out value="${loginUser.NAME}"/></li>
           <li>자기소개</li>
         </ul>
       </div>
@@ -109,50 +109,28 @@
             </select>
           </div>
           <div class="text-right">
-            <button id="editbtn" class="btn btn-default btn-xs btn-outline-primary">편집</button>
-
+            <button id="editbtn" class="btn btn-default btn-xs btn-outline-primary" >편집</button>
           </div>
         </div>
         <div id="updatePart" class="card-body">
           <c:forEach items="${myGroup}" var="list">
-            <div><c:out value="${list.group_code}"/></div>
             <div class="form-inline">
               <img class="col-4" src="/resources/pic/groupimg.png">
               <ul class="list-unstyled col-6">
                 <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>
-                <li><p>응시 인원 : <c:out value="${list.number_of_participants}"/></p></li>
-                <li><p>생성 날짜 : <c:out value='${list.reg_time}'/></p></li>
+                <li>응시 인원 : <c:out value="${list.number_of_participants}"/></li>
               </ul>
-              <input type="hidden" class="btn btn-outline-primary editgroupbtn float-right" value="탈퇴"/>
+              <button style="display: none"class="btn btn-outline-danger editgroupbtn float-right danger" value="${list.group_code}" data-toggle="modal" data-target="#RemoveGroup">탈퇴</button>
+              <button class="btn btn-outline-primary goGroupbtn float-right" href="<c:out value="${list.group_code}"/>">입장</button>
+              <div class="form-inline col-10 mt-3">생성 날짜 : <fmt:formatDate pattern="yyyy년MM월dd일" value='${list.reg_time}'/></div>
             </div>
             <hr/>
           </c:forEach>
         </div>
       </div>
-
-      <ul class="pagination justify-content-center">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
+      <form id="operForm" method="get">
+        <input type="hidden" name ="ID" value="${loginUser.ID}"/>
+      </form>
       <!-- /.container -->
     </div>
     <!-- /.container-fluid -->
@@ -161,7 +139,7 @@
     <footer class="sticky-footer">
       <div class="container my-auto">
         <div class="copyright text-center my-auto">
-          <span>Copyright © Your Website 2019</span>
+          <span>Copyright © Your Website 2020</span>
         </div>
       </div>
     </footer>
@@ -197,6 +175,26 @@
   </div>
 </div>
 
+<!-- Logout Modal-->
+<div class="modal fade" id="RemoveGroup" tabindex="-1" role="dialog" aria-labelledby="RemoveGroupLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="RemoveGroupLabel"></h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">그룹을 탈퇴하시려면 탈퇴 버튼을 눌러주세요</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+        <a class="btn btn-primary" data-oper="removeJoinGroup" >탈퇴</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="/resources/vendor/jquery/jquery.min.js"></script>
 <script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -218,43 +216,93 @@
 
 <script>
   $(document).ready(function () {
+    var operForm = $("#operForm");
+    var removeVar = $(".editgroupbtn").val();
+
     $("#groupselectbox").on("change",function(){
       var selectvalue = $("#groupselectbox").val();
       if(selectvalue === 'join'){
-        document.getElementById("updatePart").innerHTML ="<c:forEach items='${rank}' var='list'>\n" +
-                "            <div><c:out value='${list.group_code}'/></div>\n" +
+        $("#editbtn").html("편집");
+        $("#editbtn").attr("class","btn btn-xs btn-outline-primary");
+        document.getElementById("updatePart").innerHTML ="  <c:forEach items='${joinGroup}' var='list'>\n" +
                 "            <div class=\"form-inline\">\n" +
                 "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
-                "              <ul class=\"list-unstyled col-4\">\n" +
-                "                <li><strong><c:out value='${list.group_name}'/></strong></li>\n" +
-                "                <li><c:out value=''/></li>\n" +
+                "              <ul class=\"list-unstyled col-6\">\n" +
+                "                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>\n" +
+                "                <li>응시 인원 : <c:out value='${list.number_of_participants}'/></li>\n" +
                 "              </ul>\n" +
-                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
+                "              <input type=\"hidden\" class=\"btn btn-outline-danger editgroupbtn float-right danger\" value=\"탈퇴\"/>\n" +
+                "              <button class=\"btn btn-outline-primary goGroupbtn float-right\" href=\"<c:out value='${list.group_code}'/>\">입장</button>\n" +
+                "              <div class=\"form-inline col-10 mt-1\">생성 날짜 : <fmt:formatDate pattern='yyyy년MM월dd일' value='${list.reg_time}'/></div>\n" +
                 "            </div>\n" +
                 "            <hr/>\n" +
                 "          </c:forEach>";
+
       }
       else{
-        document.getElementById("updatePart").innerHTML="<c:forEach items='${myGroup}' var='list'>\n" +
-                "            <div><c:out value='${list.group_code}'/></div>\n" +
+        $("#editbtn").html("편집");
+        $("#editbtn").attr("class","btn btn-xs btn-outline-primary");
+        document.getElementById("updatePart").innerHTML="  <c:forEach items='${myGroup}' var='list'>\n" +
                 "            <div class=\"form-inline\">\n" +
                 "              <img class=\"col-4\" src=\"/resources/pic/groupimg.png\">\n" +
-                "              <ul class=\"list-unstyled col-4\">\n" +
+                "              <ul class=\"list-unstyled col-6\">\n" +
                 "                <li><strong>그룹이름 : <c:out value='${list.group_name}'/></strong></li>\n" +
-                "                <li><p>응시 인원 : </p><c:out value='${list.number_of_participants}'/></li>\n" +
-                "                <li><p>생성 날짜 : </p><c:out value='${list.reg_time}'/></li>\n" +
+                "                <li>응시 인원 : <c:out value='${list.number_of_participants}'/></li>\n" +
                 "              </ul>\n" +
-                "              <input  type=\"hidden\" class=\"btn btn-outline-primary editgroupbtn float-right\" value=\"탈퇴\"/>\n" +
+                "              <input type=\"hidden\" class=\"btn btn-outline-danger editgroupbtn float-right danger\" value=\"탈퇴\"/>\n" +
+                "              <button class=\"btn btn-outline-primary goGroupbtn float-right\" href=\"<c:out value='${list.group_code}'/>\">입장</button>\n" +
+                "              <div class=\"form-inline col-10 mt-1\">생성 날짜 : <fmt:formatDate pattern='yyyy년MM월dd일' value='${list.reg_time}'/></div>\n" +
                 "            </div>\n" +
                 "            <hr/>\n" +
                 "          </c:forEach>";
+
       }
+
+
+
+
+      $(".goGroupbtn").click(function(e){;
+        e.preventDefault();
+        operForm.append("<input type='hidden' name='group_code' value='"+$(this).attr("href")+"'/>");
+        operForm.attr("action","/main/groupPage").submit();
+      });
+
     });
-    $("#editbtn").on("click",function(){
-      $(".editgroupbtn").attr("type","button");
+
+    //내그룹, 가입한 그룹 클릭 전 그룹 내의 [입장]버튼을 눌렀을 때
+    $(".goGroupbtn").click(function(e){;
+      e.preventDefault();
+      operForm.append("<input type='hidden' name='group_code' value='"+$(this).attr("href")+"'/>");
+      operForm.attr("action","/main/groupPage").submit();
     });
+
+
+      $("#editbtn").click(function(){
+
+        if($(this).html() == "편집"){
+          $(".editgroupbtn").attr("style", "display: block");
+          $(".goGroupbtn").attr("style", "display : none");
+          $(this).html("취소");
+          $("#editbtn").removeAttr('class','btn btn-default btn-xs btn-outline-primary');
+          $("#editbtn").attr('class','btn btn-outline-danger danger')
+
+
+        }
+        else{
+          $(".editgroupbtn").attr("style", "display : none");
+          $(".goGroupbtn").attr("style", "display : block");
+          $(this).html("편집");
+          $("#editbtn").removeAttr("class","btn btn-outline-danger danger");
+          $("#editbtn").attr("class","btn btn-xs btn-outline-primary");
+
+        }
+
+      });
+
+
   });
 </script>
+
 </body>
 
 </html>

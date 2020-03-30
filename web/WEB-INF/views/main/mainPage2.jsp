@@ -121,11 +121,14 @@
                                 <li><c:out value="${username[status.index]}"/></li>
                                 <li><c:out value="${codes[status.index]}"/></li>
                                 <li>
-                                  <button class="groupBtn btn btn-primary btn-sm col-8">입장</button>
+                                    <button class=" moveToGroupPage groupBtn btn btn-primary btn-sm col-8" href="<c:out value="${board.group_code}"/>">입장</button>
                                 </li>
                               </ul>
                             </div>
                             </c:forEach>
+                            <form id="operForm" method="get">
+                                <input type="hidden" name ="ID" value="${loginUser.ID}"/>
+                            </form>
                             <!-- /.col-md-4 -->
                         </div>
                           <!-- /.row -->
@@ -140,7 +143,6 @@
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-6 -->
-
     </div>
     <!-- /.container -->
 </div>
@@ -206,6 +208,30 @@
 <script src="/resources/js/demo/chart-area-demo.js"></script>
 
 </body>
+<script>
+    $(document).ready(function(){
+
+        var result = '<c:out value="${result}"/>';
+
+        checkModal(result);
+
+        history.replaceState({},null,null);
+
+        function checkModal(result){
+            if(result === ''||history.state) {return;}
+        }
+
+        var operForm = $("#operForm");
+
+        $(".moveToGroupPage").on("click",function(e){;
+            e.preventDefault();
+            operForm.append("<input type='hidden' name='group_code' value='"+$(this).attr("href")+"' >");
+            operForm.attr("action","/main/groupPage").submit();
+        });
+
+    });
+
+</script>
 
 </html>
 

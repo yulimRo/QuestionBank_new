@@ -77,7 +77,6 @@
 
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Settings</a>
                 <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">로그아웃</a>
@@ -96,14 +95,15 @@
             <div class="form-inline">
                 <img class="mx-3" src="/resources/pic/사람이미지.png"/>
                 <ul class="list-unstyled col-4">
-                    <li class="h3 mb-2 text-gray-800">그룹 이름</li>
+                    <li class="h3 mb-2 text-gray-800">${group_name}</li>
                     <li>그룹 소개</li>
                 </ul>
             </div>
             <div>
                 <ul class="list-unstyled form-inline">
-                    <a href="#"><li class="mx-3">#카테고리</li></a>
-                    <a href="#"><li class="mx-2">#카테고리</li></a>
+                    <c:forEach items="${cate}" var="cate">
+                        <a href="#"><li class="mx-3">#<c:out value="${cate}"/></li></a>
+                    </c:forEach>
                 </ul>
             </div>
             <hr/>

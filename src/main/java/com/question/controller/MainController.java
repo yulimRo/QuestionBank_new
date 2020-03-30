@@ -10,12 +10,10 @@ import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Log4j
@@ -63,6 +61,7 @@ public class MainController {
         model.addAttribute("username",username);
         model.addAttribute("codes", codes);
         model.addAttribute("size", size);
+
         /*진행중인 퀴즈 그룹 리스트의 대표 태그와 관리자 이름*/
         model.addAttribute("list2", service.getGroupRV());
         model.addAttribute("codes2", codes2);
@@ -105,7 +104,7 @@ public class MainController {
 
         int adminCode = memberService.chkUser(id).getUSER_CODE();
         model.addAttribute("myGroup", service.getMyGroup(adminCode));
-        model.addAttribute("joinGroup", service.getGroupRV());
+        model.addAttribute("joinGroup", service.getJoinedGroup(adminCode));
         model.addAttribute("loginUser", memberService.chkUser(id));
 
 
@@ -136,7 +135,17 @@ public class MainController {
     }
 
     @GetMapping("/groupPage")
-    public void groupPage(){
+    public void groupPage(Model model,@RequestParam("group_code") int groupCode,@RequestParam("ID") String id){
+        model.addAttribute("loginUser", memberService.chkUser(id));
+        model.addAttribute("group_name", service.getOneGroup(groupCode).getGroup_name());
+
+        String[] cates = new String[service.getCate(groupCode).size()];
+
+        for(int i=0; i < cates.length; i++){
+            cates[i] = service.getCate(groupCode).get(i).getCate_name();
+        }
+
+        model.addAttribute("cate", cates);
 
     }
 
@@ -144,4 +153,7 @@ public class MainController {
     public void passwordCheck(){
 
     }
+
+
+
 }

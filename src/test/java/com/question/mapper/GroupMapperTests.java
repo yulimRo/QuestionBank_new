@@ -2,6 +2,7 @@ package com.question.mapper;
 
 import com.question.domain.GroupCateVO;
 import com.question.domain.GroupVO;
+
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -33,5 +34,15 @@ public class GroupMapperTests {
     public void testGetAdminUserName(){
         log.info(mapper.getAdminUser(2));
     }
+
+    @Test
+    public void testGetGroupCate(){
+        GroupVO group = new GroupVO();
+        group.setGroup_code(1);
+
+        log.info(mapper.readGroupCate(group.getGroup_code()));
+    }
+
+
 
 }
