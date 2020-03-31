@@ -44,24 +44,15 @@
       <div class="form-group">
         <label>이름</label>
         <div class="form-label-group">
-          <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="이름"
+          <input type="email" name="MAIL" id="NAME" class="form-control" placeholder="이름"
                  required="required" readonly>
           <label for="MAIL">이름</label>
         </div>
       </div>
       <hr>
-      <div class="form-group">
-        <label>아이디</label>
-        <div class="form-label-group">
-          <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="아이디"
-                 required="required" readonly>
-          <label for="MAIL">아이디</label>
-        </div>
-      </div>
-      <hr>
       <form action="/main/mypageInformation2" method="post">
 
-        <label>회원 아이디</label>
+        <label>아이디</label>
         <input type="text" name="ID" id="ID" class="form-control" value="${id}"
                required="required">
 
