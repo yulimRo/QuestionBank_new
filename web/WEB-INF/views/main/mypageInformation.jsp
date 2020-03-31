@@ -115,7 +115,6 @@
               <div class="modal-body">회원정보가 수정되었습니다</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-<%--                <a class="btn btn-primary" href="/main/myPage">확인</a>--%>
                 <button class="btn btn-primary" type="submit">확인</button>
               </div>
             </div>
