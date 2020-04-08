@@ -47,6 +47,5 @@
                 PWD = #{PWD},MAIL = #{MAIL},PHONE = #{PHONE} where ID = #{ID}
     </update>
 
-
 </mapper>
 

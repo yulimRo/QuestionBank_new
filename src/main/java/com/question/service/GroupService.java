@@ -19,7 +19,6 @@ public interface GroupService {
 
     public List<GroupCateVO> getCate(int group_code);
 
-
     public String readGroupCate(GroupVO group);
 
     public String getAdminName(int userCode);
@@ -31,6 +30,5 @@ public interface GroupService {
     public GroupVO getOneGroup(int group_code);
 
     public List<GroupVO> getJoinedGroup(int user_code);
-
 
 }

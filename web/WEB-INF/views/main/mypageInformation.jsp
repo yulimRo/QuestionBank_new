@@ -1,22 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
+  String id = (String) request.getAttribute("id");
   boolean login = memberId != null;
-
   if (!login) {
+    session.setAttribute("MEMBERID", id);
 %>
+
 <script>
   alert("로그인 먼저 해주세요.");
   window.location.href = "/login/login";
 </script>
+
 <%
   }
   else{
 
   }
 %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -41,28 +47,26 @@
     <div class="card-header">회원정보 수정</div>
     <div class="card-body">
 
-      <div class="form-group">
-        <label>이름</label>
-        <div class="form-label-group">
-          <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="이름"
-                 required="required" readonly>
-          <label for="MAIL">이름</label>
-        </div>
-      </div>
-      <hr>
-      <div class="form-group">
-        <label>아이디</label>
-        <div class="form-label-group">
-          <input type="email" name="MAIL" id="MAIL" class="form-control" placeholder="아이디"
-                 required="required" readonly>
-          <label for="MAIL">아이디</label>
-        </div>
-      </div>
-      <hr>
+<%--      <div class="form-group">--%>
+<%--        <label>이름</label>--%>
+<%--        <div class="form-label-group">--%>
+<%--          <input type="text" name="NAME" id="NAME" class="form-control" required="required" >--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <hr>--%>
+<%--      <div class="form-group">--%>
+<%--        <label>아이디</label>--%>
+  <%--        <div class="form-label-group">--%>
+  <%--          <input type="email" name="MAIL" id="ID2" class="form-control" placeholder="아이디"--%>
+  <%--                 required="required" readonly>--%>
+  <%--          <label for="ID2">아이디</label>--%>
+  <%--        </div>--%>
+<%--      </div>--%>
+
       <form action="/main/mypageInformation2" method="post">
 
         <label>회원 아이디</label>
-        <input type="text" name="ID" id="ID" class="form-control" value="${id}"
+        <input type="text" name="ID" id="ID" class="form-control" value="${MEMBERID}"
                required="required">
 
         <div class="form-group">

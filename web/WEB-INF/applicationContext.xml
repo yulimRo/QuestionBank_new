@@ -10,7 +10,7 @@
         <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
         <property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://localhost:3306/testdb" />
         <property name="username" value="root"/>
-        <property name="password" value="1234" />
+        <property name="password" value="Ykk159357" />
     </bean>
 
 
@@ -33,8 +33,8 @@
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
         <property name="defaultEncoding" value="utf-8"/>
-        <property name="username" value="a201758023@hs.ac.kr" />
-        <property name="password" value="dbfladl12!" />
+        <property name="username" value="stkt12345@gmail.com" />
+        <property name="password" value="ykk287456" />
 
         <property name="javaMailProperties">
             <props>

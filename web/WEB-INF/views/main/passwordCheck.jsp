@@ -2,20 +2,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
   String memberId = (String) session.getAttribute("MEMBERID");
+  String PWD = (String)request.getAttribute("PWD");
   boolean login = memberId != null;
-
   if (!login) {
+    session.setAttribute("MEMBERPWD",PWD);
 %>
+
 <script>
   alert("로그인 먼저 해주세요.");
   window.location.href = "/login/login";
 </script>
-<%
-    }
-    else{
-    }
-%>
 
+<%
+  }
+  else{
+  }
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -41,19 +43,19 @@
     <div class="card-header">비밀번호 확인</div>
     <div class="card-body">
 
-      <form action="/" method="post">
+      <form action="/main/mypageInformation" method="post">
         <div class="form-group">
           <label>회원님의 소중한 개인정보를 안전하게 보호하고
             개인정보 도용으로 인한 피해를 예방하기 위하여 비밀번호를 확인합니다.</label>
           <div class="form-label-group">
             <input type="password" name="PWD" id="PWD" class="form-control" placeholder="비밀번호"
                    required="required">
-            <label for="PWD">비밀번호</label>
+            <label for="PWD"> 비밀번호 </label>
           </div>
         </div>
 
         <div class="text-center">
-          <a class="btn btn-primary btn-block" href="/main/mypageInformation">확인</a>
+          <input type="button" class="btn btn-primary btn-block" onclick="checkPWD()" value="확인">
         </div>
 
       </form>
@@ -67,3 +69,22 @@
 
 </body>
 </html>
+
+<script>
+
+  function checkPWD(){
+
+    var pwd1=$("#PWD").val();
+    var pwd2 = "<%=session.getAttribute("MEMBERPWD")%>";
+    if(pwd1 == pwd2){
+      window.location.href = "/main/mypageInformation";
+    }
+    else {
+      alert("잘못된 비밀번호를 입력하셨습니다.")
+      window.location.href = "/main/passwordCheck";
+    }
+  }
+
+</script>
+
+

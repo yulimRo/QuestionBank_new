@@ -56,7 +56,6 @@ public class LoginController {
 
         model.addAttribute("code",service.chkUser(id).getUSER_CODE());
 
-
     }
 
     @GetMapping("/check")
@@ -75,6 +74,7 @@ public class LoginController {
                 log.info(member.getNAME()+"님 로그인 success");
                 model.addAttribute("testtest", "success");
                 model.addAttribute("id", member.getID());
+                model.addAttribute("PWD", member.getPWD());
             } else {
                 log.info("로그인 fail");
                 model.addAttribute("testtest", "fail");
@@ -82,6 +82,7 @@ public class LoginController {
 
         return "/login/sessionLogin";
     }
+
 
     @PostMapping("/signUp")
     public String signUp(MemberVO member, Model model) {
