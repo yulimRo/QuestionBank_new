@@ -74,7 +74,6 @@
             <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                 <span class="badge badge-danger"><img style="width : 75% " src="/resources/pic/사람이미지.png"></span>
-
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="/main/myPage?ID=${loginUser.ID}">마이페이지</a>

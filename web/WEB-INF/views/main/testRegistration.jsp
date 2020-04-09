@@ -158,6 +158,7 @@
                     <a class="d-block small mt-3 text-center" href="#">원하는 문제가 없으신가요?</a>
                 </div>
                 <p></p>
+                <a class="btn btn-outline-primary btn-block" href="#" data-toggle="modal">미리보기</a>
                 <a class="btn btn-primary btn-block" href="#" data-toggle="modal" data-target="#testRegistrationModal">등록</a>
                 <a class="btn btn-secondary btn-block" href="#그룹페이지" >취소</a>
             </form>
